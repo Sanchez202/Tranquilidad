@@ -4,6 +4,7 @@ import '../iniciosesion/home.dart';
 import '../mapasueños/iniciomapa.dart';
 import '../mapasueños/iniciomapados.dart'; // Asegúrate que esta clase existe
 import '../mapasueños/iniciolibros.dart';
+import '../rutinasEjercicios/inicioRutina.dart';
 
 final GoRouter _router = GoRouter(
   routes: <RouteBase>[
@@ -29,6 +30,13 @@ final GoRouter _router = GoRouter(
           path: 'iniciolibros',
           builder: (BuildContext context, GoRouterState state) {
             return iniciolibros(); // Vista a la que quieres ir
+          },
+        ),
+        //rutinaa
+        GoRoute(
+          path: 'inicioRutina',
+          builder: (BuildContext context, GoRouterState state) {
+            return InicioRutinaScreen(); // Vista a la que quieres ir
           },
         ),
       ],
