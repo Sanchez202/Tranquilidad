@@ -20,17 +20,21 @@ final GoRouter _router = GoRouter(
             return mapa();
           },
         ),
+
+        ////MAPA DE SUEÑOS ////
         GoRoute(
           path: 'iniciomapados',
           builder: (BuildContext context, GoRouterState state) {
             return IniciomapaDos(); // Vista a la que quieres ir
           },
+          
         ),
          GoRoute(
           path: 'iniciolibros',
           builder: (BuildContext context, GoRouterState state) {
             return iniciolibros(); // Vista a la que quieres ir
           },
+          
         ),
         //rutinaa
         GoRoute(

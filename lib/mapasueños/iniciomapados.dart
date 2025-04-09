@@ -81,7 +81,7 @@ class _mapaState extends State<IniciomapaDos> with TickerProviderStateMixin {
           children: [
             // Imagen de fondo original con mejor calidad
             Image.network(
-              'https://i.ibb.co/KcwMyfw1/image.png',
+              'https://i.ibb.co/HTKWVdgx/image.png',
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
