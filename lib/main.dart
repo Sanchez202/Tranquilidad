@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'app.dart'; 
+import 'rutas/app.dart'; 
 
 void main() => runApp( MyApp());

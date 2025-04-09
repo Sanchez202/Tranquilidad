@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'home.dart';
-import 'iniciomapa.dart';
-import 'iniciomapados.dart'; // Asegúrate que esta clase existe
-import 'iniciolibros.dart';
+import '../iniciosesion/home.dart';
+import '../mapasueños/iniciomapa.dart';
+import '../mapasueños/iniciomapados.dart'; // Asegúrate que esta clase existe
+import '../mapasueños/iniciolibros.dart';
 
 final GoRouter _router = GoRouter(
   routes: <RouteBase>[
