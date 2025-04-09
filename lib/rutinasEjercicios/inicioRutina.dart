@@ -45,24 +45,19 @@ class _InicioRutinaScreenState extends State<InicioRutinaScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 70),
-                
-
-
                 const SizedBox(height: 25),
                 Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    childAspectRatio: 1.2,
+                  child: ListView(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                     children: [
                       _buildExerciseCard(
                         context,
                         'Técnicas respiración',
                         Icons.air,
-                        'https://i.ibb.co/5KjW0yX/breathing.jpg', // Ejemplo de imagen
+                        'https://i.ibb.co/5KjW0yX/breathing.jpg',
                         Colors.blue[200]!,
                       ),
+                      const SizedBox(height: 16),
                       _buildExerciseCard(
                         context,
                         'Meditación',
@@ -70,6 +65,7 @@ class _InicioRutinaScreenState extends State<InicioRutinaScreen> {
                         'https://i.ibb.co/3zQY7Xk/meditation.jpg',
                         Colors.green[200]!,
                       ),
+                      const SizedBox(height: 16),
                       _buildExerciseCard(
                         context,
                         'Estiramientos',
@@ -77,6 +73,7 @@ class _InicioRutinaScreenState extends State<InicioRutinaScreen> {
                         'https://i.ibb.co/0jQY7Xk/stretching.jpg',
                         Colors.orange[200]!,
                       ),
+                      const SizedBox(height: 16),
                       _buildExerciseCard(
                         context,
                         'Favoritos',
@@ -101,14 +98,14 @@ class _InicioRutinaScreenState extends State<InicioRutinaScreen> {
   }
 
   Widget _buildExerciseCard(
-    BuildContext context, 
-    String title, 
-    IconData icon, 
+    BuildContext context,
+    String title,
+    IconData icon,
     String imageUrl,
     Color color,
   ) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
@@ -121,7 +118,6 @@ class _InicioRutinaScreenState extends State<InicioRutinaScreen> {
       ),
       child: Stack(
         children: [
-          // Imagen de fondo
           ClipRRect(
             borderRadius: BorderRadius.circular(25),
             child: Image.network(
@@ -135,7 +131,6 @@ class _InicioRutinaScreenState extends State<InicioRutinaScreen> {
               ),
             ),
           ),
-          // Gradiente para el texto
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
@@ -149,7 +144,6 @@ class _InicioRutinaScreenState extends State<InicioRutinaScreen> {
               ),
             ),
           ),
-          // Contenido
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
