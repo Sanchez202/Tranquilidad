@@ -159,7 +159,7 @@ class _TranquilidadAppState extends State<TranquilidadApp> {
                 const SizedBox(height: 16),
                 
                 // Carrusel con indicadores
-                Container(
+                SizedBox(
                   height: 190,
                   child: InfiniteCarousel(),
                 ),
@@ -283,6 +283,8 @@ class _TranquilidadAppState extends State<TranquilidadApp> {
 
 // Widget mejorado para el carrusel infinito con indicadores de posición
 class InfiniteCarousel extends StatefulWidget {
+  const InfiniteCarousel({super.key});
+
   @override
   _InfiniteCarouselState createState() => _InfiniteCarouselState();
 }

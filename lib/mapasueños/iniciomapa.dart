@@ -13,7 +13,7 @@ class mapa extends StatefulWidget {
 
 class _mapaState extends State<mapa> {
   int _selectedIndex = 1;
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
   Timer? _autoScrollTimer;
 
@@ -104,7 +104,7 @@ class _mapaState extends State<mapa> {
             SizedBox(height: 15), // Reducido de 20 a 15
             
             // Tarjetas con altura reducida
-            Container(
+            SizedBox(
               height: 380, // Reducido de 420 a 380
               child: PageView(
                 controller: _pageController,

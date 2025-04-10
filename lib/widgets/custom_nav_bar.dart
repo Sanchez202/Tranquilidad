@@ -7,11 +7,11 @@ class CustomNavBar extends StatelessWidget {
   final Color primaryColor;
 
   const CustomNavBar({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.onItemSelected,
     this.primaryColor = const Color.fromARGB(255, 167, 131, 228),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
