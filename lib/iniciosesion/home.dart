@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () => context.go('/inicioRutina'),
-              child: const Text('Ir a rutina'),
+              child: const Text('Ir a Rutina'),
             ),
                         const SizedBox(height: 16),
                         ElevatedButton(
@@ -30,7 +30,12 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () => context.go('/home'),
-              child: const Text('Ir Atencio Profsional'),
+              child: const Text('Ir a Atención Profesional'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () => context.go('/inicio_musicoterapia'),
+              child: const Text('Ir a Musicoterapia'),
             ),
           ],
         ),

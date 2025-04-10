@@ -6,6 +6,7 @@ import '../mapasueños/iniciomapados.dart'; // Asegúrate que esta clase existe
 import '../mapasueños/iniciolibros.dart';
 import '../rutinasEjercicios/inicioRutina.dart';
 import '../atencionprofesional/home.dart';
+import '../musicoterapia/inicio_musicoterapia.dart';
 
 final GoRouter _router = GoRouter(
   routes: <RouteBase>[
@@ -49,6 +50,14 @@ final GoRouter _router = GoRouter(
             return HomenScreen(); // Vista a la que quieres ir
           },
         ),
+        /////muuuu ////
+         GoRoute(
+  path: 'inicio_musicoterapia',
+  builder: (BuildContext context, GoRouterState state) {
+    return const InicioMusicoterapia();
+  },
+),
+
       ],
     ),
   ],
