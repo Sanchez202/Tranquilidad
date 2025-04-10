@@ -5,6 +5,7 @@ import '../mapasueños/iniciomapa.dart';
 import '../mapasueños/iniciomapados.dart'; // Asegúrate que esta clase existe
 import '../mapasueños/iniciolibros.dart';
 import '../rutinasEjercicios/inicioRutina.dart';
+import '../atencionprofesional/home.dart';
 
 final GoRouter _router = GoRouter(
   routes: <RouteBase>[
@@ -27,20 +28,25 @@ final GoRouter _router = GoRouter(
           builder: (BuildContext context, GoRouterState state) {
             return IniciomapaDos(); // Vista a la que quieres ir
           },
-          
         ),
-         GoRoute(
+        GoRoute(
           path: 'iniciolibros',
           builder: (BuildContext context, GoRouterState state) {
             return iniciolibros(); // Vista a la que quieres ir
           },
-          
         ),
         //rutinaa
         GoRoute(
           path: 'inicioRutina',
           builder: (BuildContext context, GoRouterState state) {
             return InicioRutinaScreen(); // Vista a la que quieres ir
+          },
+        ),
+        ////Atencion Profesional ////
+        GoRoute(
+          path: 'home',
+          builder: (BuildContext context, GoRouterState state) {
+            return HomenScreen(); // Vista a la que quieres ir
           },
         ),
       ],
@@ -56,9 +62,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: _router,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
     );
   }
 }
