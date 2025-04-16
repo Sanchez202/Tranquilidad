@@ -329,7 +329,7 @@ void _onTabSelected(int index) {
                 const Text(
                   'GENEROS',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

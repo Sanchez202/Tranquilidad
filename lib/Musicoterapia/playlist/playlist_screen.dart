@@ -372,7 +372,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> with SingleTickerProvid
                 const Text(
                   'PLAYLIST',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

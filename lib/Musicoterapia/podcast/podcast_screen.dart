@@ -264,7 +264,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
                 const Text(
                   'PODCAST',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

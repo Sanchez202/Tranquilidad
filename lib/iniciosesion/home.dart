@@ -32,11 +32,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => context.go('/home'),
               child: const Text('Ir a Atención Profesional'),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () => context.go('/inicio_musicoterapia'),
-              child: const Text('Ir a Musicoterapia'),
-            ),
+    
           ],
         ),
       ),

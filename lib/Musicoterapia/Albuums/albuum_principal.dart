@@ -330,7 +330,7 @@ AlbumItem(
                 const Text(
                   'ÁLBUMS',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

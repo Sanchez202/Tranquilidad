@@ -185,7 +185,7 @@ class _MeGustaScreenState extends State<MeGustaScreen> {
                             'TUS ME GUSTA',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 18,
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

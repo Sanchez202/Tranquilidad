@@ -315,7 +315,7 @@ class _SonidosBinauralesScreenState extends State<SonidosBinauralesScreen> {
                 const Text(
                   'SONIDOS BINAURALES',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
