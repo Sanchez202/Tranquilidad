@@ -62,9 +62,48 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/MUSICOTERAPIA/fondo_musicoterapia.png
+    - assets/MUSICOTERAPIA/img_1.jpg
+    - assets/MUSICOTERAPIA/img_2.jpg
+    - assets/MUSICOTERAPIA/img_3.jpg
+    - assets/MUSICOTERAPIA/img_4.jpg
+    - assets/MUSICOTERAPIA/img_5.jpg
+    - assets/MUSICOTERAPIA/img_6.jpg
+    - assets/MUSICOTERAPIA/img_7.jpg
+    - assets/MUSICOTERAPIA/img_8.jpg
+    - assets/MUSICOTERAPIA/img_9.jpg
+    - assets/MUSICOTERAPIA/img_10.jpg
+    - assets/MUSICOTERAPIA/img_11.jpg
+    - assets/MUSICOTERAPIA/img1_album.jpg
+    - assets/MUSICOTERAPIA/img_album2.jpg
+    - assets/MUSICOTERAPIA/img3_album.jpg
+    - assets/MUSICOTERAPIA/img_album4.jpg
+    - assets/MUSICOTERAPIA/img_album5.jpg
+    - assets/MUSICOTERAPIA/img6_album.jpg
+    - assets/MUSICOTERAPIA/img_album7.jpg
+    - assets/MUSICOTERAPIA/img_album8.jpg
+    - assets/MUSICOTERAPIA/img_album9.jpg
+    - assets/MUSICOTERAPIA/img_album10.jpg
+    - assets/MUSICOTERAPIA/img_album11.jpg
+    - assets/MUSICOTERAPIA/binaural1.jpg
+    - assets/MUSICOTERAPIA/binaural2.jpg
+    - assets/MUSICOTERAPIA/binaural3.jpg
+    - assets/MUSICOTERAPIA/binaural_1.jpg
+    - assets/MUSICOTERAPIA/binaural_2.jpg
+    - assets/MUSICOTERAPIA/binaural_3.jpg
+    - assets/MUSICOTERAPIA/binaural_4.jpg
+    - assets/MUSICOTERAPIA/binaural_5.jpg
+    - assets/MUSICOTERAPIA/binaural_6.jpg
+    - assets/MUSICOTERAPIA/binaural_7.jpg
+    - assets/MUSICOTERAPIA/binaural_8.jpg
+    - assets/MUSICOTERAPIA/binaural_9.jpg
+    - assets/MUSICOTERAPIA/binaural_10.jpg
+    - assets/MUSICOTERAPIA/podcast1.jpg
+    - assets/MUSICOTERAPIA/podcast2.jpg
+    - assets/MUSICOTERAPIA/podcast3.jpg
+    - assets/MUSICOTERAPIA/podcast4.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -91,3 +130,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  

@@ -2,11 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../iniciosesion/home.dart';
 import '../mapasueños/iniciomapa.dart';
-import '../mapasueños/iniciomapados.dart'; // Asegúrate que esta clase existe
+import '../mapasueños/iniciomapados.dart';
 import '../mapasueños/iniciolibros.dart';
 import '../rutinasEjercicios/inicioRutina.dart';
 import '../atencionprofesional/home.dart';
 import '../musicoterapia/inicio_musicoterapia.dart';
+import '../musicoterapia/album_detail_screen.dart';
+import '../musicoterapia/music_player_screen.dart';
+import '../musicoterapia/Albuums/albuum_principal.dart';
+import '../musicoterapia/Albuums/album_elegido.dart';
+import '../musicoterapia/Albuums/reproducor_album.dart';
+import '../musicoterapia/podcast/podcast_screen.dart';
+import '../musicoterapia/podcast/podcast_listados.dart';
+import '../musicoterapia/podcast/reproductor_podcast.dart';
+import '../musicoterapia/sonidos_binaurales/sonidos_binaurales_screen.dart';
+import '../musicoterapia/sonidos_binaurales/reproductor_binaural.dart';
+import '../musicoterapia/playlist/playlist_screen.dart';
+import '../Musicoterapia/playlist/canciones_playlist.dart';
+import '../Musicoterapia/playlist/reproductor_playlist.dart';
+import '../musicoterapia/me_gusta/me_gusta_screen.dart';
+import '../musicoterapia/me_gusta/reproductor_me_gusta.dart';
+
 
 final GoRouter _router = GoRouter(
   routes: <RouteBase>[
@@ -50,14 +66,211 @@ final GoRouter _router = GoRouter(
             return HomenScreen(); // Vista a la que quieres ir
           },
         ),
-        /////muuuu ////
-         GoRoute(
-  path: 'inicio_musicoterapia',
-  builder: (BuildContext context, GoRouterState state) {
-    return const InicioMusicoterapia();
+        /////MUSICOTERAPIA////
+        GoRoute(
+          path: 'inicio_musicoterapia',
+          builder: (BuildContext context, GoRouterState state) {
+            return const InicioMusicoterapia();
+          },
+        ),
+        GoRoute(
+          path: 'album_detail/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            final id = int.parse(state.pathParameters['id']!);
+            final extra = state.extra as Map<String, dynamic>;
+
+            return AlbumDetailScreen(
+              albumId: id,
+              title: extra['title'] as String,
+              subtitle: extra['subtitle'] as String,
+              imageUrl: extra['imageUrl'] as String,
+              isAsset: extra['isAsset'] as bool,
+            );
+          },
+        ),
+
+        GoRoute(
+          path: 'album_elegido/:albumId',
+          builder: (BuildContext context, GoRouterState state) {
+            final albumId = int.parse(state.pathParameters['albumId'] ?? '0');
+            final Map<String, dynamic> extra =
+                state.extra as Map<String, dynamic>? ?? {};
+
+            return AlbumElegidoScreen(
+              albumId: albumId,
+              title: extra['title'] ?? 'Álbum',
+              subtitle: extra['subtitle'] ?? '',
+              imageUrl: extra['imageUrl'] ?? '',
+              isAsset: extra['isAsset'] ?? false,
+            );
+          },
+        ),
+
+        GoRoute(
+          path: 'player',
+          builder: (BuildContext context, GoRouterState state) {
+            final extra = state.extra as Map<String, dynamic>;
+
+            return MusicPlayerScreen(
+              albumId: extra['albumId'] as int,
+              albumTitle: extra['albumTitle'] as String,
+              albumArtist: extra['albumArtist'] as String,
+              coverUrl: extra['coverUrl'] as String,
+              isAsset: extra['isAsset'] as bool,
+              trackIndex: extra['trackIndex'] as int,
+              tracks: (extra['tracks'] as List).cast<Map<String, dynamic>>(),
+            );
+          },
+        ),
+
+        GoRoute(
+          path: 'reproducor_album',
+          builder: (BuildContext context, GoRouterState state) {
+            final extra = state.extra as Map<String, dynamic>;
+
+            return ReproductorAlbumScreen(playbackData: extra);
+          },
+        ),
+
+        GoRoute(
+          path: 'musicoterapia',
+          builder: (BuildContext context, GoRouterState state) {
+            return const InicioMusicoterapia();
+          },
+        ),
+
+        GoRoute(
+          path: 'musicoterapia/albums',
+          builder: (BuildContext context, GoRouterState state) {
+            return const AlbumPrincipal();
+          },
+        ),
+        GoRoute(
+          path: 'album_principal',
+          builder: (BuildContext context, GoRouterState state) {
+            return const AlbumPrincipal();
+          },
+        ),
+
+        GoRoute(
+          path: 'musicoterapia/podcast',
+          builder: (BuildContext context, GoRouterState state) {
+            return const PodcastScreen(); // Pantalla para podcast
+          },
+        ),
+        GoRoute(
+          path: 'musicoterapia/sonidos_binaurales',
+          builder: (BuildContext context, GoRouterState state) {
+            return const SonidosBinauralesScreen();
+          },
+        ),
+        GoRoute(
+          path: 'musicoterapia/playlist',
+          builder: (BuildContext context, GoRouterState state) {
+            return const PlaylistScreen();
+          },
+        ),
+        GoRoute(
+          path: 'musicoterapia/me_gusta',
+          builder: (BuildContext context, GoRouterState state) {
+            return const MeGustaScreen();
+          },
+        ),
+        GoRoute(
+          path: 'reproductor_me_gusta',
+          builder: (BuildContext context, GoRouterState state) {
+            final extra = state.extra as Map<String, dynamic>;
+            return ReproductorMeGustaScreen(
+              trackIndex: extra['trackIndex'] as int,
+              tracks: (extra['tracks'] as List).cast<Map<String, dynamic>>(),
+            );
+          },
+        ),
+        GoRoute(
+          path: 'musicoterapia/playlist/canciones',
+          builder: (BuildContext context, GoRouterState state) {
+            final extra = state.extra as Map<String, dynamic>;
+
+            return CancionesPlaylistScreen(
+              title: extra['title'] as String,
+              subtitle: extra['subtitle'] as String,
+              coverUrl: extra['coverUrl'] as String,
+              isAsset: extra['isAsset'] as bool,
+              playlistId: extra['playlistId'] as int,
+              trackCount: extra['trackCount'] as int,
+              duration: extra['duration'] as String,
+              creator: extra['creator'] as String,
+              isUserCreated: extra['isUserCreated'] as bool? ?? false,
+            );
+          },
+        ),
+        GoRoute(
+          path: 'musicoterapia/playlist/reproductor',
+          builder: (BuildContext context, GoRouterState state) {
+            final extra = state.extra as Map<String, dynamic>;
+
+            return ReproductorPlaylistScreen(
+              playlistId: extra['playlistId'] as int,
+              playlistTitle: extra['playlistTitle'] as String,
+              playlistCreator: extra['playlistCreator'] as String,
+              coverUrl: extra['coverUrl'] as String,
+              isAsset: extra['isAsset'] as bool,
+              trackIndex: extra['trackIndex'] as int,
+              tracks: (extra['tracks'] as List).cast<Map<String, dynamic>>(),
+            );
+          },
+        ),
+GoRoute(
+  path: '/reproductor_binaural',
+  builder: (context, state) {
+    final Map<String, dynamic> extras = state.extra as Map<String, dynamic>;
+    
+    // Usar la lista de tracks completa que viene en los extras
+    final List<Map<String, dynamic>> tracks = extras['tracks'] as List<Map<String, dynamic>>;
+    final int trackIndex = extras['trackIndex'] as int;
+    
+    return ReproductorBinaural(
+      audioId: extras['sonidoId'] as int,
+      audioTitle: extras['title'] as String,
+      audioCreator: extras['author'] as String,
+      coverUrl: extras['coverUrl'] as String,
+      isAsset: extras['isAsset'] as bool,
+      trackIndex: trackIndex,
+      tracks: tracks,
+    );
   },
 ),
-
+GoRoute(
+  path: '/podcast_listados',
+  builder: (context, state) {
+    // Extraer los parámetros enviados
+    final Map<String, dynamic> params = state.extra as Map<String, dynamic>;
+    
+    return PodcastListadosScreen(
+      title: params['title'] as String,
+      subtitle: params['subtitle'] as String,
+      imageUrl: params['imageUrl'] as String,
+      isAsset: params['isAsset'] as bool,
+      podcastId: params['podcastId'] as int,
+    );
+  },
+),
+GoRoute(
+  path: '/musicoterapia/podcast/reproductor_podcast',
+  builder: (context, state) {
+    final Map<String, dynamic> params = state.extra as Map<String, dynamic>;
+    return PodcastPlayerScreen(
+      podcastId: params['podcastId'] as int,
+      podcastTitle: params['podcastTitle'] as String,
+      podcastHost: params['podcastHost'] as String,
+      coverUrl: params['coverUrl'] as String,
+      isAsset: params['isAsset'] as bool,
+      episodeIndex: params['episodeIndex'] as int,
+      episodes: params['episodes'] as List<Map<String, dynamic>>,
+    );
+  },
+),
+        //MUSICOTERAPIA//
       ],
     ),
   ],
