@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import '../iniciosesion/home.dart';
 import '../mapasueños/iniciomapa.dart';
 import '../mapasueños/iniciomapados.dart';
+import '../mapasueños/canva.dart';
+import '../mapasueños/seguimiento.dart';
 import '../mapasueños/iniciolibros.dart';
 import '../rutinasEjercicios/inicioRutina.dart';
 import '../atencionprofesional/home.dart';
@@ -50,6 +52,18 @@ final GoRouter _router = GoRouter(
           path: 'iniciolibros',
           builder: (BuildContext context, GoRouterState state) {
             return iniciolibros(); // Vista a la que quieres ir
+          },
+        ),
+         GoRoute(
+          path: 'canva',
+          builder: (BuildContext context, GoRouterState state) {
+            return CanvasEditor(); // Vista a la que quieres ir
+          },
+        ),
+         GoRoute(
+          path: 'seguimiento',
+          builder: (BuildContext context, GoRouterState state) {
+            return TaskBoard(); // Vista a la que quieres ir
           },
         ),
         //rutinaa

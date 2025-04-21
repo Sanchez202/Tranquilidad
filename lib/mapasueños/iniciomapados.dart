@@ -267,7 +267,7 @@ class _mapaState extends State<IniciomapaDos> with TickerProviderStateMixin {
             onTap: () {
               // Efecto de pulsación al tocar
           
-              context.push('/iniciomapados');
+              context.push('/canva');
             },
             child: Container(
               height: 220,
@@ -484,7 +484,7 @@ class _mapaState extends State<IniciomapaDos> with TickerProviderStateMixin {
             onTap: () {
               // Efecto de pulsación al tocar
              
-              context.push('/iniciolibros');
+              context.push('/seguimiento');
             },
             child: Container(
               height: 220,
