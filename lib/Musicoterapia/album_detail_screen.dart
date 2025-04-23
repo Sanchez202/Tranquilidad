@@ -10,13 +10,13 @@ class AlbumDetailScreen extends StatefulWidget {
   final int albumId;
 
   const AlbumDetailScreen({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.imageUrl,
     required this.isAsset,
     required this.albumId,
-  }) : super(key: key);
+  });
 
   @override
   State<AlbumDetailScreen> createState() => _AlbumDetailScreenState();
@@ -132,10 +132,10 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const CustomAppBar(), // Mantiene el AppBar original
+      appBar: const CustomAppBar(),
       body: Stack(
         children: [
-          // Mantiene el fondo original
+          // Fondo
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -144,7 +144,7 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
               ),
             ),
           ),
-          Container(color: Colors.white.withOpacity(0.7)),
+          Container(color: const Color.fromARGB(255, 209, 187, 224).withAlpha(178)), // 0.7 opacity ≈ 178 alpha
 
           // Contenido
           SafeArea(
@@ -175,7 +175,7 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withAlpha(76), // 0.3 opacity ≈ 76 alpha
                                   blurRadius: 10,
                                   offset: const Offset(0, 5),
                                 ),
@@ -259,7 +259,7 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF9575CD),
-                              foregroundColor: Colors.white, // Texto en blanco como solicitado
+                              foregroundColor: Colors.white,
                               padding: const EdgeInsets.symmetric(vertical: 12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),
@@ -290,7 +290,7 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
                         // Botón favorito
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withAlpha(76), // 0.3 opacity ≈ 76 alpha
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -302,7 +302,6 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
                               setState(() {
                                 isFavorite = !isFavorite;
                               });
-                              // Mostrar notificación según el estado
                               _showNotification(isFavorite 
                                 ? 'Añadido a Tus Me Gusta' 
                                 : 'Eliminado de Tus Me Gusta');
@@ -312,10 +311,10 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
                         
                         const SizedBox(width: 8),
                         
-                        // Botón compartir (nuevo)
+                        // Botón compartir
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withAlpha(76), // 0.3 opacity ≈ 76 alpha
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -401,16 +400,13 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
                                 setState(() {
                                   songFavorites[index] = !songFavorites[index];
                                 });
-                                // Mostrar notificación con el nombre de la pista
+                                // String interpolation para la notificación
                                 _showNotification(
-                                  '"${songList[index]['title']}" ' + 
-                                  (songFavorites[index] 
-                                    ? 'añadido a Tus Me Gusta' 
-                                    : 'eliminado de Tus Me Gusta')
+                                  '"${songList[index]['title']}" ${songFavorites[index] ? 'añadido a Tus Me Gusta' : 'eliminado de Tus Me Gusta'}'
                                 );
                               },
                             ),
-                            // Botón de reproducción estilizado como en la imagen
+                            // Botón de reproducción estilizado
                             Container(
                               width: 25,
                               height: 25,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 class AlbumPrincipal extends StatefulWidget {
   const AlbumPrincipal({super.key});
@@ -22,14 +23,14 @@ class _AlbumPrincipalState extends State<AlbumPrincipal> {
   // Lista de todos los álbumes disponibles
   final List<AlbumItem> _allAlbums = [
     // Popular Albums
-AlbumItem(
-  'Música Clásica',
-  'Lo mejor de la música clásica',
-  'assets/MUSICOTERAPIA/img1_album.jpg', // Use album image as primary
-  1,
-  artist: 'Varios Artistas',
-  songs: [
-    Song('Nocturno Op. 9 No. 2', 'Chopin', 'assets/MUSICOTERAPIA/img1_album.jpg', '4:32'),
+    AlbumItem(
+      'Música Clásica',
+      'Lo mejor de la música clásica',
+      'assets/MUSICOTERAPIA/img1_album.jpg', // Use album image as primary
+      1,
+      artist: 'Varios Artistas',
+      songs: [
+        Song('Nocturno Op. 9 No. 2', 'Chopin', 'assets/MUSICOTERAPIA/img1_album.jpg', '4:32'),
         Song('Claro de Luna', 'Beethoven', 'assets/MUSICOTERAPIA/img1_album.jpg', '5:10'),
         Song('Las Cuatro Estaciones: Primavera', 'Vivaldi', 'assets/MUSICOTERAPIA/img1_album.jpg', '3:25'),
         Song('Canon en D', 'Pachelbel', 'assets/MUSICOTERAPIA/img1_album.jpg', '4:40'),
@@ -48,14 +49,14 @@ AlbumItem(
         Song('Autumn Leaves', 'Cannonball Adderley', 'assets/MUSICOTERAPIA/img_album2.jpg', '6:46'),
       ],
     ),
-AlbumItem(
-  'Sonidos Naturales',
-  'Conecta con la naturaleza',
-  'assets/MUSICOTERAPIA/img3_album.jpg',
-  3,
-  artist: 'Nature Sounds',
-  songs: [
-    Song('Lluvia en el Bosque', 'Sounds of Nature', 'assets/MUSICOTERAPIA/img3_album.jpg', '8:15'),
+    AlbumItem(
+      'Sonidos Naturales',
+      'Conecta con la naturaleza',
+      'assets/MUSICOTERAPIA/img3_album.jpg',
+      3,
+      artist: 'Nature Sounds',
+      songs: [
+        Song('Lluvia en el Bosque', 'Sounds of Nature', 'assets/MUSICOTERAPIA/img3_album.jpg', '8:15'),
         Song('Amanecer en la Playa', 'Nature Ambient', 'assets/MUSICOTERAPIA/img3_album.jpg', '10:30'),
         Song('Cascada Tropical', 'Earth Tones', 'assets/MUSICOTERAPIA/img3_album.jpg', '7:45'),
         Song('Canto de Aves', 'Forest Melodies', 'assets/MUSICOTERAPIA/img3_album.jpg', '6:20'),
@@ -90,14 +91,14 @@ AlbumItem(
         Song('Weightless', 'Ambient Masters', 'assets/MUSICOTERAPIA/img_album5.jpg', '10:30'),
       ],
     ),
-AlbumItem(
-  'Sonidos Binaurales',
-  'Equilibra tu energía mental',
-  'assets/MUSICOTERAPIA/img6_album.jpg',
-  6,
-  artist: 'BrainSync',
-  songs: [
-    Song('Ondas Alpha', 'BrainSync', 'assets/MUSICOTERAPIA/img6_album.jpg', '30:15'),
+    AlbumItem(
+      'Sonidos Binaurales',
+      'Equilibra tu energía mental',
+      'assets/MUSICOTERAPIA/img6_album.jpg',
+      6,
+      artist: 'BrainSync',
+      songs: [
+        Song('Ondas Alpha', 'BrainSync', 'assets/MUSICOTERAPIA/img6_album.jpg', '30:15'),
         Song('Frecuencia Theta', 'Mind Waves', 'assets/MUSICOTERAPIA/img6_album.jpg', '25:40'),
         Song('Delta Profundo', 'Deep Brain', 'assets/MUSICOTERAPIA/img6_album.jpg', '45:30'),
         Song('Gamma Focus', 'Brain Power', 'assets/MUSICOTERAPIA/img6_album.jpg', '20:10'),
@@ -278,7 +279,7 @@ AlbumItem(
       _selectedTabIndex = index;
     });
     
- // Navegar a la vista correspondiente según la pestaña seleccionada
+    // Navegar a la vista correspondiente según la pestaña seleccionada
     switch (index) {
       case 0: // GENEROS
         context.go('/musicoterapia');
@@ -287,8 +288,8 @@ AlbumItem(
         context.go('/musicoterapia/albums');
         break;
       case 2: // PODCAST
-      context.go('/musicoterapia/podcast');
-      break;
+        context.go('/musicoterapia/podcast');
+        break;
       case 3: // SONIDOS BINAURALES
         context.go('/musicoterapia/sonidos_binaurales');
         break;
@@ -300,7 +301,13 @@ AlbumItem(
         break;
     }
   }
-  
+
+  // Función para manejar errores de carga de imágenes de forma segura
+  void _logImageError(String imageUrl, Object error) {
+    if (kDebugMode) {
+      debugPrint('Error loading image: $imageUrl - $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -318,8 +325,7 @@ AlbumItem(
               ),
             ),
           ),
-          // Light overlay for better readability
-          Container(color: Colors.white.withOpacity(0.7)),
+Container(color: const Color.fromARGB(255, 209, 187, 224).withAlpha(179)),
           
           // Main content
           SafeArea(
@@ -390,7 +396,7 @@ AlbumItem(
                                     style: TextStyle(
                                       color: _selectedTabIndex == index 
                                           ? const Color(0xFF9575CD)
-                                          : Colors.grey,
+                                          : const Color.fromARGB(255, 0, 0, 0),
                                       fontWeight: _selectedTabIndex == index 
                                           ? FontWeight.bold 
                                           : FontWeight.normal,
@@ -519,58 +525,57 @@ AlbumItem(
     );
   }
 
-Widget _buildSongListItem(SongWithAlbum songWithAlbum) {
-  final song = songWithAlbum.song;
-  final album = songWithAlbum.album;
-  final songIndex = songWithAlbum.index;
-  
-  return GestureDetector(
-    onTap: () {
-      // Cambiado para navegar a album_elegido primero
-      context.go('/album_elegido/${album.id}', extra: {
-        'title': album.title,
-        'subtitle': album.subtitle,
-        'imageUrl': album.imageUrl,
-        'isAsset': true,
-        'albumId': album.id,
-        'initialSongIndex': songIndex, // Para reproducir la canción seleccionada
-      });
-    },
-    child: Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          // Song image
-          ClipRRect(
-            borderRadius: BorderRadius.circular(6),
-            child: Image.asset(
-              song.imageUrl,
-              width: 50,
-              height: 50,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                print('Error loading song image: ${song.imageUrl} - $error');
-                return Container(
-                  color: Colors.grey[300],
-                  width: 50,
-                  height: 50,
-                  child: Icon(Icons.music_note, size: 25, color: Colors.grey[500]),
-                );
-              },
+  Widget _buildSongListItem(SongWithAlbum songWithAlbum) {
+    final song = songWithAlbum.song;
+    final album = songWithAlbum.album;
+    final songIndex = songWithAlbum.index;
+    
+    return GestureDetector(
+      onTap: () {
+        context.go('/album_elegido/${album.id}', extra: {
+          'title': album.title,
+          'subtitle': album.subtitle,
+          'imageUrl': album.imageUrl,
+          'isAsset': true,
+          'albumId': album.id,
+          'initialSongIndex': songIndex,
+        });
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white.withAlpha(179), // FIXED: Using withAlpha instead of withOpacity (0.7 * 255 ≈ 179)
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(26), // FIXED: Using withAlpha instead of withOpacity (0.1 * 255 ≈ 26)
+              blurRadius: 4,
+              offset: const Offset(0, 2),
             ),
-          ),
+          ],
+        ),
+        child: Row(
+          children: [
+            // Song image
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.asset(
+                song.imageUrl,
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  _logImageError(song.imageUrl, error);
+                  return Container(
+                    color: Colors.grey[300],
+                    width: 50,
+                    height: 50,
+                    child: Icon(Icons.music_note, size: 25, color: Colors.grey[500]),
+                  );
+                },
+              ),
+            ),
             const SizedBox(width: 15),
             // Song info
             Expanded(
@@ -622,31 +627,7 @@ Widget _buildSongListItem(SongWithAlbum songWithAlbum) {
       ),
     );
   }
-
-  void _navigateToMusicPlayer(AlbumItem album, int songIndex) {
-    // Preparar la lista de canciones para el reproductor
-    final trackList = album.songs.map((song) {
-      return {
-        'title': song.title,
-        'artist': song.artist,
-        'duration': song.duration,
-        'coverUrl': song.imageUrl,
-        'isAsset': true,
-      };
-    }).toList();
-    
-    // Navegar al reproductor usando go_router
-    context.go('/player', extra: {
-      'albumId': album.id,
-      'albumTitle': album.title,
-      'albumArtist': album.artist,
-      'coverUrl': album.imageUrl,
-      'isAsset': true,
-      'trackIndex': songIndex,
-      'tracks': trackList,
-    });
-  }
-
+  
   Widget _buildAlbumCategoriesView() {
     return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -694,92 +675,94 @@ Widget _buildSongListItem(SongWithAlbum songWithAlbum) {
     );
   }
 
-Widget _buildMusicCard(
-  BuildContext context,
-  String title,
-  String subtitle,
-  String imageUrl,
-  int albumId,
-  {bool isAsset = false}
-) {
-  return GestureDetector(
-    onTap: () {
-      // Cambiado para navegar a la nueva ruta
-      context.go('/album_elegido/$albumId', extra: {
-        'title': title,
-        'subtitle': subtitle,
-        'imageUrl': imageUrl,
-        'isAsset': isAsset,
-        'albumId': albumId,
-      });
-    },
-    child: Container(
-      width: 160,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 160,
-            width: 160,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  blurRadius: 5,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: isAsset 
-                ? Image.asset(
-                    imageUrl,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      print('Error loading asset image: $imageUrl - $error');
-                      return Container(
-                        color: Colors.grey[300],
-                        child: Icon(Icons.music_note, size: 50, color: Colors.grey[500]),
-                      );
-                    },
-                  )
-                : Image.network(
-                    imageUrl,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      color: Colors.grey[300],
-                      child: Icon(Icons.music_note, size: 50, color: Colors.grey[500]),
-                    ),
+  Widget _buildMusicCard(
+    BuildContext context,
+    String title,
+    String subtitle,
+    String imageUrl,
+    int albumId,
+    {bool isAsset = false}
+  ) {
+    return GestureDetector(
+      onTap: () {
+        context.go('/album_elegido/$albumId', extra: {
+          'title': title,
+          'subtitle': subtitle,
+          'imageUrl': imageUrl,
+          'isAsset': isAsset,
+          'albumId': albumId,
+        });
+      },
+      child: Container(
+        width: 160,
+        margin: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 160,
+              width: 160,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withAlpha(51), // FIXED: Using withAlpha instead of withOpacity (0.2 * 255 ≈ 51)
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
                   ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: isAsset 
+                  ? Image.asset(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        _logImageError(imageUrl, error);
+                        return Container(
+                          color: Colors.grey[300],
+                          child: Icon(Icons.music_note, size: 50, color: Colors.grey[500]),
+                        );
+                      },
+                    )
+                  : Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        _logImageError(imageUrl, error);
+                        return Container(
+                          color: Colors.grey[300],
+                          child: Icon(Icons.music_note, size: 50, color: Colors.grey[500]),
+                        );
+                      },
+                    ),
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          Text(
-            subtitle,
-            style: TextStyle(
-              color: Colors.grey[600],
-              fontSize: 14,
+            Text(
+              subtitle,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 14,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 }
 
 // Modelos de datos

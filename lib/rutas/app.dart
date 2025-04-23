@@ -16,6 +16,9 @@ import '../musicoterapia/Albuums/album_elegido.dart';
 import '../musicoterapia/Albuums/reproducor_album.dart';
 import '../musicoterapia/podcast/podcast_screen.dart';
 import '../musicoterapia/podcast/podcast_listados.dart';
+import '../musicoterapia/podcast/grabar_podcast.dart';
+import '../musicoterapia/podcast/biblioteca_podcast.dart';
+import '../musicoterapia/podcast/video_podcast.dart';
 import '../musicoterapia/podcast/reproductor_podcast.dart';
 import '../musicoterapia/sonidos_binaurales/sonidos_binaurales_screen.dart';
 import '../musicoterapia/sonidos_binaurales/reproductor_binaural.dart';
@@ -288,6 +291,22 @@ GoRoute(
     );
   },
 ),
+        GoRoute(
+          path: '/musicoterapia/podcast/grabar_podcast',
+          builder: (context, state) {
+            return const GrabarPodcast();
+          },
+        ),
+        GoRoute(
+  path: '/musicoterapia/podcast/video_podcast',
+  builder: (context, state) => const VideoPodcast(),
+),
+        GoRoute(
+          path: '/musicoterapia/podcast/biblioteca_podcast',
+          builder: (context, state) {
+            return const BibliotecaPodcast();
+          },
+        ),
         //MUSICOTERAPIA//
       //ALIMENTACION//
                 GoRoute(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'dart:async';
-import 'package:tranquilidad_app/Musicoterapia/sonidos_binaurales/sonidos_binaurales_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class ReproductorBinaural extends StatefulWidget {
@@ -14,7 +13,7 @@ class ReproductorBinaural extends StatefulWidget {
   final List<Map<String, dynamic>> tracks;
 
   const ReproductorBinaural({
-    Key? key,
+    super.key,
     required this.audioId,
     required this.audioTitle,
     required this.audioCreator,
@@ -22,7 +21,7 @@ class ReproductorBinaural extends StatefulWidget {
     required this.isAsset,
     required this.trackIndex,
     required this.tracks,
-  }) : super(key: key);
+  });
 
   @override
   State<ReproductorBinaural> createState() => _ReproductorBinauralState();
@@ -227,7 +226,7 @@ class _ReproductorBinauralState extends State<ReproductorBinaural> {
     // Reemplazamos WillPopScope (deprecado) con PopScope (actual)
     return PopScope(
       canPop: false, // Impide que el sistema cierre la pantalla
-      onPopInvoked: (didPop) {
+       onPopInvokedWithResult: (didPop, result) {        
         // Si didPop es falso, significa que la navegación fue bloqueada
         if (!didPop) {
           _navigateToSonidosBinaurales();
@@ -249,7 +248,7 @@ class _ReproductorBinauralState extends State<ReproductorBinaural> {
           ),
           child: Container(
             // Overlay ligero para mejorar legibilidad
-            decoration: BoxDecoration(color: Colors.black.withOpacity(0.4)),
+            decoration: BoxDecoration(color: Colors.black.withAlpha(102)),
             child: SafeArea(
               child: LayoutBuilder(
                 builder: (context, constraints) {
@@ -303,7 +302,7 @@ class _ReproductorBinauralState extends State<ReproductorBinaural> {
                                   borderRadius: BorderRadius.circular(20),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
+                                      color: Colors.black.withAlpha(128),
                                       blurRadius: 20,
                                       offset: const Offset(0, 10),
                                     ),
@@ -401,9 +400,9 @@ class _ReproductorBinauralState extends State<ReproductorBinaural> {
                                     ),
                                     activeTrackColor: purpleColor,
                                     inactiveTrackColor: Colors.black
-                                        .withOpacity(0.3),
+                                        .withAlpha(77),
                                     thumbColor: purpleColor,
-                                    overlayColor: purpleColor.withOpacity(0.3),
+                                    overlayColor: purpleColor.withAlpha(77),
                                   ),
                                   child: Slider(
                                     value: _progress,
@@ -459,7 +458,7 @@ class _ReproductorBinauralState extends State<ReproductorBinaural> {
                                         color:
                                             isShuffle
                                                 ? Colors.black
-                                                : Colors.black.withOpacity(0.6),
+                                                : Colors.black.withAlpha(153),
                                         size: 22,
                                       ),
                                       onPressed: _toggleShuffle,
@@ -511,7 +510,7 @@ class _ReproductorBinauralState extends State<ReproductorBinaural> {
                                         color:
                                             isLooping
                                                 ? Colors.black
-                                                : Colors.black.withOpacity(0.6),
+                                                : Colors.black.withAlpha(153),
                                         size: 22,
                                       ),
                                       onPressed: _toggleLooping,

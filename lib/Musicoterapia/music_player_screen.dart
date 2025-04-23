@@ -12,7 +12,7 @@ class MusicPlayerScreen extends StatefulWidget {
   final List<Map<String, dynamic>> tracks;
 
   const MusicPlayerScreen({
-    Key? key,
+    super.key,
     required this.albumId,
     required this.albumTitle,
     required this.albumArtist,
@@ -20,7 +20,7 @@ class MusicPlayerScreen extends StatefulWidget {
     required this.isAsset,
     required this.trackIndex,
     required this.tracks,
-  }) : super(key: key);
+  });
 
   @override
   State<MusicPlayerScreen> createState() => _MusicPlayerScreenState();
@@ -227,7 +227,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
         child: Container(
           // Overlay ligero para mejorar legibilidad sin usar el color morado
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.4), // Solo un poco de oscuridad para leer mejor
+            color: Colors.black.withAlpha(100), 
           ),
           child: SafeArea(
             child: LayoutBuilder(
@@ -274,7 +274,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withAlpha(10),
                                     blurRadius: 20,
                                     offset: const Offset(0, 10),
                                   ),
@@ -355,9 +355,9 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                                   thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6),
                                   overlayShape: const RoundSliderOverlayShape(overlayRadius: 10),
                                   activeTrackColor: purpleColor,
-                                  inactiveTrackColor: Colors.black.withOpacity(0.3),
+                                  inactiveTrackColor: Colors.black.withAlpha(10),
                                   thumbColor: purpleColor,
-                                  overlayColor: purpleColor.withOpacity(0.3),
+                                  overlayColor: purpleColor.withAlpha(150),
                                 ),
                                 child: Slider(
                                   value: _progress,
@@ -404,7 +404,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                                     padding: EdgeInsets.zero,
                                     icon: Icon(
                                       isShuffle ? Icons.shuffle : Icons.shuffle,
-                                      color: isShuffle ? Colors.black : Colors.black.withOpacity(0.6),
+                                      color: isShuffle ? Colors.black : Colors.black.withAlpha(100),
                                       size: 22,
                                     ),
                                     onPressed: _toggleShuffle,
@@ -449,7 +449,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                                     padding: EdgeInsets.zero,
                                     icon: Icon(
                                       isLooping ? Icons.repeat_one : Icons.repeat,
-                                      color: isLooping ? Colors.black : Colors.black.withOpacity(0.6),
+                                      color: isLooping ? Colors.black : Colors.black.withAlpha(100),
                                       size: 22,
                                     ),
                                     onPressed: _toggleLooping,

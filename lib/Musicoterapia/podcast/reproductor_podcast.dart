@@ -13,7 +13,7 @@ class PodcastPlayerScreen extends StatefulWidget {
   final List<Map<String, dynamic>> episodes;
 
   const PodcastPlayerScreen({
-    Key? key,
+    super.key,
     required this.podcastId,
     required this.podcastTitle,
     required this.podcastHost,
@@ -21,7 +21,7 @@ class PodcastPlayerScreen extends StatefulWidget {
     required this.isAsset,
     required this.episodeIndex,
     required this.episodes,
-  }) : super(key: key);
+  });
 
   @override
   State<PodcastPlayerScreen> createState() => _PodcastPlayerScreenState();
@@ -350,7 +350,7 @@ class _PodcastPlayerScreenState extends State<PodcastPlayerScreen> {
         child: Container(
           // Overlay ligero para mejorar legibilidad
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.4), // Añadido un overlay similar
+            color: Colors.black.withAlpha(102), // Añadido un overlay similar
           ),
           child: SafeArea(
             child: LayoutBuilder(
@@ -411,7 +411,7 @@ class _PodcastPlayerScreenState extends State<PodcastPlayerScreen> {
                                   borderRadius: BorderRadius.circular(20),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
+                                      color: Colors.black.withAlpha(128),
                                       blurRadius: 20,
                                       offset: const Offset(0, 10),
                                     ),
@@ -496,9 +496,9 @@ class _PodcastPlayerScreenState extends State<PodcastPlayerScreen> {
                                           thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6),
                                           overlayShape: const RoundSliderOverlayShape(overlayRadius: 10),
                                           activeTrackColor: purpleColor,
-                                          inactiveTrackColor: Colors.black.withOpacity(0.3),
+                                          inactiveTrackColor: Colors.black.withAlpha(77),
                                           thumbColor: purpleColor,
-                                          overlayColor: purpleColor.withOpacity(0.3),
+                                          overlayColor: purpleColor.withAlpha(77),
                                         ),
                                         child: Slider(
                                           value: _progress,
@@ -569,7 +569,7 @@ class _PodcastPlayerScreenState extends State<PodcastPlayerScreen> {
                                         padding: EdgeInsets.zero,
                                         icon: Icon(
                                           isShuffle ? Icons.shuffle : Icons.shuffle,
-                                          color: isShuffle ? Colors.black : Colors.black.withOpacity(0.6),
+                                          color: isShuffle ? Colors.black : Colors.black.withAlpha(153),
                                           size: 22,
                                         ),
                                         onPressed: _toggleShuffle,
@@ -700,7 +700,7 @@ class _PodcastPlayerScreenState extends State<PodcastPlayerScreen> {
                                         padding: EdgeInsets.zero,
                                         icon: Icon(
                                           isLooping ? Icons.repeat_one : Icons.repeat,
-                                          color: isLooping ? Colors.black : Colors.black.withOpacity(0.6),
+                                          color: isLooping ? Colors.black : Colors.black.withAlpha(153),
                                           size: 22,
                                         ),
                                         onPressed: _toggleLooping,

@@ -304,7 +304,7 @@ class _SonidosBinauralesScreenState extends State<SonidosBinauralesScreen> {
             ),
           ),
           // Light overlay for better readability
-          Container(color: Colors.white.withOpacity(0.7)),
+          Container(color: const Color.fromARGB(255, 209, 187, 224).withAlpha(179)),
           
           // Main content
           SafeArea(
@@ -375,7 +375,7 @@ class _SonidosBinauralesScreenState extends State<SonidosBinauralesScreen> {
                                     style: TextStyle(
                                       color: _selectedTabIndex == index 
                                           ? const Color(0xFF9575CD)
-                                          : Colors.grey,
+                                          : const Color.fromARGB(255, 0, 0, 0),
                                       fontWeight: _selectedTabIndex == index 
                                           ? FontWeight.bold 
                                           : FontWeight.normal,
@@ -546,7 +546,7 @@ class _SonidosBinauralesScreenState extends State<SonidosBinauralesScreen> {
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
+                      color: Colors.black.withAlpha(51),
                       blurRadius: 6,
                       offset: const Offset(0, 3),
                     ),

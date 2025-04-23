@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'package:go_router/go_router.dart';
 
-
 class CancionesPlaylistScreen extends StatefulWidget {
   final String title;
   final String subtitle;
@@ -15,7 +14,7 @@ class CancionesPlaylistScreen extends StatefulWidget {
   final bool isUserCreated;
 
   const CancionesPlaylistScreen({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.coverUrl,
@@ -25,7 +24,7 @@ class CancionesPlaylistScreen extends StatefulWidget {
     required this.duration,
     required this.creator,
     this.isUserCreated = false,
-  }) : super(key: key);
+  });
 
   @override
   State<CancionesPlaylistScreen> createState() =>
@@ -49,25 +48,22 @@ class _CancionesPlaylistScreenState extends State<CancionesPlaylistScreen> {
   }
 
   // Método para mostrar notificaciones
-// Método para mostrar notificaciones con Snackbar (modificado)
-void _showNotification(String message) {
-  ScaffoldMessenger.of(context).hideCurrentSnackBar();
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(
-        message,
-        style: const TextStyle(color: Colors.white),
+  // Método para mostrar notificaciones con Snackbar (modificado)
+  void _showNotification(String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message, style: const TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF9575CD),
+        duration: const Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
       ),
-      backgroundColor: const Color(0xFF9575CD),
-      duration: const Duration(seconds: 2),
-      behavior: SnackBarBehavior.floating,
-      margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-    ),
-  );
-}
+    );
+  }
 
   // Método para obtener canciones específicas según el ID de la playlist
   List<Map<String, dynamic>> _getSongsForPlaylist(int playlistId) {
@@ -564,7 +560,6 @@ void _showNotification(String message) {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -585,7 +580,9 @@ void _showNotification(String message) {
           ),
 
           // Light overlay for better readability
-          Container(color: Colors.white.withOpacity(0.7)),
+          Container(
+            color: const Color.fromARGB(255, 209, 187, 224).withAlpha(179),
+          ),
 
           // Content
           SafeArea(
@@ -616,7 +613,7 @@ void _showNotification(String message) {
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withAlpha(77),
                                   blurRadius: 10,
                                   offset: const Offset(0, 5),
                                 ),
@@ -662,7 +659,7 @@ void _showNotification(String message) {
                               Text(
                                 "Creado por: ${widget.creator}",
                                 style: TextStyle(
-                                  color: Colors.black.withOpacity(0.7),
+                                  color: Colors.black.withAlpha(179),
                                   fontSize: 14,
                                 ),
                               ),
@@ -728,7 +725,7 @@ void _showNotification(String message) {
                         const SizedBox(width: 12),
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withAlpha(77),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -745,18 +742,20 @@ void _showNotification(String message) {
                               setState(() {
                                 isFavorite = !isFavorite;
                               });
-                              
+
                               // Mostrar notificación según el estado
-                              _showNotification(isFavorite
-                                  ? 'Añadido a Tus Me Gusta'
-                                  : 'Eliminado de Tus Me Gusta');
+                              _showNotification(
+                                isFavorite
+                                    ? 'Añadido a Tus Me Gusta'
+                                    : 'Eliminado de Tus Me Gusta',
+                              );
                             },
                           ),
                         ),
                         const SizedBox(width: 12),
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withAlpha(77),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -764,21 +763,19 @@ void _showNotification(String message) {
                               Icons.share_outlined,
                               color: Colors.black,
                             ),
-                            onPressed: () {
-                            },
+                            onPressed: () {},
                           ),
                         ),
                         if (widget.isUserCreated) ...[
                           const SizedBox(width: 12),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.3),
+                              color: Colors.white.withAlpha(77),
                               shape: BoxShape.circle,
                             ),
                             child: IconButton(
                               icon: const Icon(Icons.edit, color: Colors.black),
-                              onPressed: () {
-                              },
+                              onPressed: () {},
                             ),
                           ),
                         ],
@@ -838,7 +835,6 @@ void _showNotification(String message) {
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-
                             IconButton(
                               icon: Icon(
                                 songFavorites[index] ?? false
@@ -855,12 +851,9 @@ void _showNotification(String message) {
                                   songFavorites[index] =
                                       !(songFavorites[index] ?? false);
                                 });
-                                
+
                                 _showNotification(
-                                  '"${songList[index]['title']}" ' +
-                                    (songFavorites[index]!
-                                      ? 'añadido a Tus Me Gusta'
-                                      : 'eliminado de Tus Me Gusta')
+                                  '"${songList[index]['title']}" ${songFavorites[index]! ? 'añadido a Tus Me Gusta' : 'eliminado de Tus Me Gusta'}',
                                 );
                               },
                             ),

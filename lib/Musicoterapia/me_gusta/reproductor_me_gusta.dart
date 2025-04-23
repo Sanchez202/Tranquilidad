@@ -8,10 +8,10 @@ class ReproductorMeGustaScreen extends StatefulWidget {
   final List<Map<String, dynamic>> tracks;
 
   const ReproductorMeGustaScreen({
-    Key? key,
+    super.key,
     required this.trackIndex,
     required this.tracks,
-  }) : super(key: key);
+  });
 
   @override
   State<ReproductorMeGustaScreen> createState() => _ReproductorMeGustaScreenState();
@@ -213,7 +213,7 @@ class _ReproductorMeGustaScreenState extends State<ReproductorMeGustaScreen> {
             image: const AssetImage("assets/MUSICOTERAPIA/fondo_musicoterapia.png"),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.3),
+              Colors.black.withAlpha(70),
               BlendMode.darken,
             ),
           ),
@@ -265,7 +265,8 @@ class _ReproductorMeGustaScreenState extends State<ReproductorMeGustaScreen> {
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
+                                      color: Colors.black.withAlpha(179),
+
                                     blurRadius: 20,
                                     offset: const Offset(0, 10),
                                   ),
@@ -357,7 +358,7 @@ class _ReproductorMeGustaScreenState extends State<ReproductorMeGustaScreen> {
                                   activeTrackColor: purpleColor,
                                   inactiveTrackColor: Colors.grey.shade300,
                                   thumbColor: purpleColor,
-                                  overlayColor: purpleColor.withOpacity(0.3),
+                                  overlayColor: purpleColor.withAlpha(10),
                                 ),
                                 child: Slider(
                                   value: _progress,
@@ -406,7 +407,7 @@ class _ReproductorMeGustaScreenState extends State<ReproductorMeGustaScreen> {
                                     padding: EdgeInsets.zero,
                                     icon: Icon(
                                       Icons.shuffle,
-                                      color: isShuffle ? Colors.black : Colors.black.withOpacity(0.6),
+                                      color: isShuffle ? Colors.black : Colors.black.withAlpha(10),
                                       size: 22,
                                     ),
                                     onPressed: _toggleShuffle,
@@ -452,7 +453,7 @@ class _ReproductorMeGustaScreenState extends State<ReproductorMeGustaScreen> {
                                     padding: EdgeInsets.zero,
                                     icon: Icon(
                                       isLooping ? Icons.repeat_one : Icons.repeat,
-                                      color: isLooping ? Colors.black : Colors.black.withOpacity(0.6),
+                                      color: isLooping ? Colors.black : Colors.black.withAlpha(10),
                                       size: 22,
                                     ),
                                     onPressed: _toggleLooping,

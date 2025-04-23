@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
-import 'package:go_router/go_router.dart';
 import 'dart:async';
 
 class ReproductorAlbumScreen extends StatefulWidget {
   final Map<String, dynamic> playbackData;
 
   const ReproductorAlbumScreen({
-    Key? key,
+    super.key,
     required this.playbackData,
-  }) : super(key: key);
+  });
 
   @override
   State<ReproductorAlbumScreen> createState() => _ReproductorAlbumScreenState();
@@ -217,7 +216,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
             image: const AssetImage("assets/MUSICOTERAPIA/fondo_musicoterapia.png"),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.3),
+              Colors.black.withAlpha(77), // 0.3 opacity (0.3 * 255 = 76.5)
               BlendMode.darken,
             ),
           ),
@@ -234,7 +233,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Column(
                       children: [
-                        // Back button and title (añadido como pediste)
+                        // Back button and title
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Row(
@@ -258,7 +257,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                           ),
                         ),
                         
-                        // Album cover más grande (35% de la altura de la pantalla)
+                        // Album cover
                         Container(
                           height: size.height * 0.35,
                           padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
@@ -269,7 +268,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withAlpha(128), // 0.5 opacity (0.5 * 255 = 127.5)
                                     blurRadius: 20,
                                     offset: const Offset(0, 10),
                                   ),
@@ -309,7 +308,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                                         Text(
                                           currentTrack['title'] ?? 'Weightless',
                                           style: const TextStyle(
-                                            color: Colors.black,  // Negro para el título
+                                            color: Colors.black,
                                             fontSize: 24,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -317,10 +316,10 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         const SizedBox(height: 4),
-                                        Text(
-                                          'Lo mejor de la música clásica',  // Subtítulo fijo como pediste
-                                          style: const TextStyle(
-                                            color: Colors.black,  // Negro para el subtítulo 
+                                        const Text(
+                                          'Lo mejor de la música clásica',
+                                          style: TextStyle(
+                                            color: Colors.black,
                                             fontSize: 16,
                                           ),
                                           maxLines: 1,
@@ -329,11 +328,11 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                                       ],
                                     ),
                                   ),
-                                  // Botón de favorito en negro cuando no está activado
+                                  // Botón de favorito
                                   IconButton(
                                     icon: Icon(
                                       isFavorite ? Icons.favorite : Icons.favorite_border,
-                                      color: isFavorite ? purpleColor : Colors.black,  // Negro cuando no está activado
+                                      color: isFavorite ? purpleColor : Colors.black,
                                       size: 30,
                                     ),
                                     onPressed: _toggleFavorite,
@@ -343,7 +342,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                               
                               const SizedBox(height: 20),
                               
-                              // Slider con color morado
+                              // Slider
                               SliderTheme(
                                 data: SliderTheme.of(context).copyWith(
                                   trackHeight: 4,
@@ -352,7 +351,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                                   activeTrackColor: purpleColor,
                                   inactiveTrackColor: Colors.grey.shade300,
                                   thumbColor: purpleColor,
-                                  overlayColor: purpleColor.withOpacity(0.3),
+                                  overlayColor: purpleColor.withAlpha(77), // 0.3 opacity
                                 ),
                                 child: Slider(
                                   value: _progress,
@@ -393,7 +392,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                               
                               const SizedBox(height: 20),
                               
-                              // Controles con mejor espaciado
+                              // Controles
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
@@ -401,7 +400,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                                     padding: EdgeInsets.zero,
                                     icon: Icon(
                                       Icons.shuffle,
-                                      color: isShuffle ? Colors.black : Colors.black.withOpacity(0.6),
+                                      color: isShuffle ? Colors.black : Colors.black.withAlpha(153), // 0.6 opacity (0.6 * 255 = 153)
                                       size: 22,
                                     ),
                                     onPressed: _toggleShuffle,
@@ -416,7 +415,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                                     ),
                                     onPressed: _playPreviousTrack,
                                   ),
-                                  // Botón de reproducción negro como en la imagen
+                                  // Botón de reproducción
                                   Container(
                                     width: 60,
                                     height: 60,
@@ -447,7 +446,7 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
                                     padding: EdgeInsets.zero,
                                     icon: Icon(
                                       isLooping ? Icons.repeat_one : Icons.repeat,
-                                      color: isLooping ? Colors.black : Colors.black.withOpacity(0.6),
+                                      color: isLooping ? Colors.black : Colors.black.withAlpha(153), // 0.6 opacity
                                       size: 22,
                                     ),
                                     onPressed: _toggleLooping,
@@ -472,7 +471,6 @@ class _ReproductorAlbumScreenState extends State<ReproductorAlbumScreen> {
   
   @override
   void dispose() {
-    // Detener el timer cuando se destruye el widget
     _timer.cancel();
     super.dispose();
   }

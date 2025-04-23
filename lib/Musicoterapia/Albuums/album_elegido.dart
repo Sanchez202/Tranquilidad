@@ -10,13 +10,13 @@ class AlbumElegidoScreen extends StatefulWidget {
   final int albumId;
 
   const AlbumElegidoScreen({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.imageUrl,
     required this.isAsset,
     required this.albumId,
-  }) : super(key: key);
+  });
 
   @override
   State<AlbumElegidoScreen> createState() => _AlbumElegidoScreenState();
@@ -25,18 +25,15 @@ class AlbumElegidoScreen extends StatefulWidget {
 class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
   bool isFavorite = false;
   late List<Map<String, String>> songList;
-  // Track favorite status for each song
   late List<bool> trackFavorites;
 
   @override
   void initState() {
     super.initState();
     songList = _getSongsForAlbum(widget.albumId);
-    // Initialize favorite status for each track
     trackFavorites = List.generate(songList.length, (index) => false);
   }
 
-  // Método para obtener canciones específicas según el ID del álbum
   List<Map<String, String>> _getSongsForAlbum(int albumId) {
     switch (albumId) {
       case 1:
@@ -108,7 +105,6 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
     }
   }
 
-  // Método para mostrar notificaciones con Snackbar
   void _showNotification(String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -128,7 +124,6 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
     );
   }
 
-  // Método para navegar al reproductor
   void _navigateToPlayer(int trackIndex) {
     context.push(
       '/reproducor_album',
@@ -151,7 +146,6 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
       appBar: const CustomAppBar(),
       body: Stack(
         children: [
-          // Background image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -162,15 +156,15 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
               ),
             ),
           ),
-          Container(color: Colors.white.withOpacity(0.7)),
+          Container(
+            color: Color.fromARGB(255, 209, 187, 224).withAlpha(179), // 0.7 * 255 ≈ 179
+          ),
 
-          // Content
           SafeArea(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Back button
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0, top: 16.0),
                     child: IconButton(
@@ -179,7 +173,6 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                     ),
                   ),
 
-                  // Album cover and info
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
@@ -193,7 +186,7 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withAlpha(77), // 0.3 * 255 ≈ 77
                                   blurRadius: 10,
                                   offset: const Offset(0, 5),
                                 ),
@@ -201,16 +194,15 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child:
-                                  widget.isAsset
-                                      ? Image.asset(
-                                        widget.imageUrl,
-                                        fit: BoxFit.cover,
-                                      )
-                                      : Image.network(
-                                        widget.imageUrl,
-                                        fit: BoxFit.cover,
-                                      ),
+                              child: widget.isAsset
+                                ? Image.asset(
+                                    widget.imageUrl,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.network(
+                                    widget.imageUrl,
+                                    fit: BoxFit.cover,
+                                  ),
                             ),
                           ),
                         ),
@@ -245,7 +237,7 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    '${songList.length} canciones • 90:45',
+                                    "${songList.length} canciones • 90:45",
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 14,
@@ -260,7 +252,6 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                     ),
                   ),
 
-                  // Play buttons
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Row(
@@ -275,34 +266,29 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                                 borderRadius: BorderRadius.circular(25),
                               ),
                             ),
-                            onPressed: () {
-                              // Navegar a la pantalla del reproductor con todo el álbum
-                              _navigateToPlayer(0); // Comenzar con la primera pista
-                            },
+                            onPressed: () => _navigateToPlayer(0),
                             child: const Text('REPRODUCIR'),
                           ),
                         ),
                         const SizedBox(width: 12),
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withAlpha(77), // 0.3 * 255 ≈ 77
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
                             icon: Icon(
                               isFavorite
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color:
-                                  isFavorite
-                                      ? const Color(0xFF9575CD)
-                                      : Colors.black,
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                              color: isFavorite
+                                ? const Color(0xFF9575CD)
+                                : Colors.black,
                             ),
                             onPressed: () {
                               setState(() {
                                 isFavorite = !isFavorite;
                               });
-                              // Mostrar notificación según el estado
                               _showNotification(isFavorite 
                                 ? 'Añadido a Tus Me Gusta' 
                                 : 'Eliminado de Tus Me Gusta');
@@ -310,10 +296,9 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                           ),
                         ),
                         const SizedBox(width: 12),
-                        // Añadido botón de compartir
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withAlpha(77), // 0.3 * 255 ≈ 77
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -327,7 +312,6 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                     ),
                   ),
 
-                  // Song list
                   const Padding(
                     padding: EdgeInsets.all(20.0),
                     child: Text(
@@ -340,7 +324,6 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                     ),
                   ),
 
-                  // Lista de canciones modificada
                   ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -355,26 +338,23 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                           onTap: () => _navigateToPlayer(index),
                           child: Row(
                             children: [
-                              // Miniatura del álbum en lugar del número
                               Container(
                                 width: 50,
                                 height: 50,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  image:
-                                      widget.isAsset
-                                          ? DecorationImage(
-                                            image: AssetImage(widget.imageUrl),
-                                            fit: BoxFit.cover,
-                                          )
-                                          : DecorationImage(
-                                            image: NetworkImage(widget.imageUrl),
-                                            fit: BoxFit.cover,
-                                          ),
+                                  image: widget.isAsset
+                                    ? DecorationImage(
+                                        image: AssetImage(widget.imageUrl),
+                                        fit: BoxFit.cover,
+                                      )
+                                    : DecorationImage(
+                                        image: NetworkImage(widget.imageUrl),
+                                        fit: BoxFit.cover,
+                                      ),
                                 ),
                               ),
                               const SizedBox(width: 12),
-                              // Información de la canción
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -397,7 +377,6 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                                   ],
                                 ),
                               ),
-                              // Duración
                               Text(
                                 songList[index]['duration']!,
                                 style: const TextStyle(
@@ -406,32 +385,27 @@ class _AlbumElegidoScreenState extends State<AlbumElegidoScreen> {
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              // Heart icon
                               IconButton(
                                 icon: Icon(
                                   trackFavorites[index]
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      trackFavorites[index]
-                                          ? const Color(0xFF9575CD)
-                                          : Colors.black,
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                  color: trackFavorites[index]
+                                    ? const Color(0xFF9575CD)
+                                    : Colors.black,
                                   size: 24,
                                 ),
                                 onPressed: () {
                                   setState(() {
                                     trackFavorites[index] = !trackFavorites[index];
                                   });
-                                  // Mostrar notificación con el nombre de la pista
                                   _showNotification(
-                                    '"${songList[index]['title']}" ' + 
-                                    (trackFavorites[index] 
+                                    '"${songList[index]['title']}" ${trackFavorites[index] 
                                       ? 'añadido a Tus Me Gusta' 
-                                      : 'eliminado de Tus Me Gusta')
+                                      : 'eliminado de Tus Me Gusta'}'
                                   );
                                 },
                               ),
-                              // Play button
                               IconButton(
                                 icon: Container(
                                   width: 25,

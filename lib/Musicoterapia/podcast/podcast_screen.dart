@@ -13,7 +13,7 @@ class PodcastScreen extends StatefulWidget {
 class _PodcastScreenState extends State<PodcastScreen> {
   int _selectedIndex = 1;
   int _selectedTabIndex = 2; // Seleccionamos "PODCAST" por defecto
-  final List<String> _tabs = ['GÉNEROS', 'ÁLBUMS', 'PODCAST', 'SONIDOS BINAURALES', 'PLAYLIST', 'ME GUSTA'];
+  final List<String> _tabs = ['GENEROS', 'ÁLBUMS', 'PODCAST', 'SONIDOS BINAURALES', 'PLAYLIST', 'ME GUSTA'];
   
   // Definir color púrpura constante para uso en toda la clase
   final Color purpleColor = const Color(0xFF9575CD);
@@ -99,7 +99,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
   ];
 
   // Estado para los corazones (favoritos)
-  List<bool> _favorites = List.generate(5, (index) => false);
+ final List<bool> _favorites = List.generate(5, (index) => false);
 
   @override
   void initState() {
@@ -173,8 +173,25 @@ class _PodcastScreenState extends State<PodcastScreen> {
     }
   }
 
+  // Método para navegar a la pantalla de grabar podcast
+  void _navigateToGrabarPodcast() {
+    context.push('/musicoterapia/podcast/grabar_podcast');
+  }
+
   // Nuevo método para navegar a PodcastListadosScreen
   void _navigateToPodcastDetails(PodcastItem podcast) {
+    // Si es el último podcast (id=5), navegamos a la pantalla grabar_podcast
+    if (podcast.id == 5) {
+      _navigateToGrabarPodcast();
+      return;
+    }
+    
+    // Si es el podcast "Nuestro estudio" (id=4), también navegamos a grabar_podcast
+    if (podcast.id == 4) {
+      _navigateToGrabarPodcast();
+      return;
+    }
+    
     context.push('/podcast_listados', extra: {
       'title': podcast.title,
       'subtitle': podcast.subtitle,
@@ -253,7 +270,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
             ),
           ),
           // Light overlay for better readability
-          Container(color: Colors.white.withOpacity(0.7)),
+          Container(color: const Color.fromARGB(255, 209, 187, 224).withAlpha(179)),
           
           // Main content
           SafeArea(
@@ -324,7 +341,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
                                     style: TextStyle(
                                       color: _selectedTabIndex == index 
                                           ? purpleColor
-                                          : Colors.grey,
+                                          : const Color.fromARGB(255, 0, 0, 0),
                                       fontWeight: _selectedTabIndex == index 
                                           ? FontWeight.bold 
                                           : FontWeight.normal,
@@ -449,7 +466,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             // Quitamos el borde como solicitado
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha(26),
           ),
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: ListView.builder(
@@ -469,14 +486,14 @@ class _PodcastScreenState extends State<PodcastScreen> {
                   // Añadimos sombra para dar profundidad
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
+                      color: Colors.black.withAlpha(51),
                       blurRadius: 4,
                       offset: const Offset(0, 2),
                     ),
                   ],
                   // Añadimos un borde para definir mejor la imagen
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.7),
+                    color: Colors.white.withAlpha(179),
                     width: 2,
                   ),
                 ),
@@ -485,7 +502,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(12),
                     onTap: () => _navigateFromCarousel(index),
-                    splashColor: purpleColor.withOpacity(0.3),
+                    splashColor: purpleColor.withAlpha(77),
                     highlightColor: Colors.transparent,
                     child: const SizedBox.expand(),
                   ),
@@ -502,7 +519,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: Colors.grey.withOpacity(0.3),
+                color: Colors.grey.withAlpha(77),
                 width: 1,
               ),
             ),
@@ -520,89 +537,90 @@ class _PodcastScreenState extends State<PodcastScreen> {
         // Tercer contenedor con imagen, corazón y botón play
         _buildPodcastContainer(2),
         
-        // Cuarto contenedor (MODIFICADO: Quitado el botón de corazón, solo dejamos el botón +)
-        Container(
-          height: 180,
-          margin: const EdgeInsets.only(bottom: 15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              image: AssetImage(_mainPodcasts[3].imageUrl),
-              fit: BoxFit.cover,
+        // MODIFICACIÓN: Cuarto contenedor con navegación en toda la imagen
+        GestureDetector(
+          onTap: _navigateToGrabarPodcast,
+          child: Container(
+            height: 180,
+            margin: const EdgeInsets.only(bottom: 15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: AssetImage(_mainPodcasts[3].imageUrl),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          child: Stack(
-            children: [
-              // Overlay oscuro para mejorar legibilidad del texto
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.transparent,
-                      Colors.black.withOpacity(0.6),
-                    ],
-                    stops: const [0.7, 1.0],
-                  ),
-                ),
-              ),
-              
-              // Título y subtítulo
-              Positioned(
-                left: 15,
-                bottom: 15,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _mainPodcasts[3].title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      _mainPodcasts[3].subtitle,
-                      style: const TextStyle(
-                        color: Colors.white70,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              
-              // ELIMINADO: Ya no hay botón de corazón en este contenedor
-              
-              // Botón + colocado en la misma posición que el botón play
-              Positioned(
-                bottom: 15,
-                right: 15,
-                child: Container(
-                  width: 40,
-                  height: 40,
+            child: Stack(
+              children: [
+                // Overlay oscuro para mejorar legibilidad del texto
+                Container(
                   decoration: BoxDecoration(
-                    color: purpleColor,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
+                    borderRadius: BorderRadius.circular(10),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withAlpha(153),
+                      ],
+                      stops: const [0.7, 1.0],
+                    ),
+                  ),
+                ),
+                
+                // Título y subtítulo
+                Positioned(
+                  left: 15,
+                  bottom: 15,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _mainPodcasts[3].title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        _mainPodcasts[3].subtitle,
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 14,
+                        ),
                       ),
                     ],
                   ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 25,
+                ),
+                
+                // Botón + colocado en la misma posición que el botón play
+                Positioned(
+                  bottom: 15,
+                  right: 15,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: purpleColor,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(77),
+                          blurRadius: 5,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 25,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         
@@ -642,7 +660,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Colors.black.withOpacity(0.6),
+                    Colors.black.withAlpha(153),
                   ],
                   stops: const [0.7, 1.0],
                 ),
@@ -703,7 +721,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
+                        color: Colors.black.withAlpha(77),
                         blurRadius: 5,
                         offset: const Offset(0, 2),
                       ),
@@ -723,6 +741,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
     );
   }
 }
+
 class PodcastItem {
   final String title;
   final String subtitle;

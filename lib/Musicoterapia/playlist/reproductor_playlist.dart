@@ -13,7 +13,7 @@ class ReproductorPlaylistScreen extends StatefulWidget {
   final List<Map<String, dynamic>> tracks;
 
   const ReproductorPlaylistScreen({
-    Key? key,
+    super.key,
     required this.playlistId,
     required this.playlistTitle,
     required this.playlistCreator,
@@ -21,7 +21,7 @@ class ReproductorPlaylistScreen extends StatefulWidget {
     required this.isAsset,
     required this.trackIndex,
     required this.tracks,
-  }) : super(key: key);
+  });
 
   @override
   State<ReproductorPlaylistScreen> createState() => _ReproductorPlaylistScreenState();
@@ -213,7 +213,7 @@ class _ReproductorPlaylistScreenState extends State<ReproductorPlaylistScreen> {
             image: const AssetImage("assets/MUSICOTERAPIA/fondo_musicoterapia.png"),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.3),
+              Colors.black.withAlpha(77),
               BlendMode.darken,
             ),
           ),
@@ -262,13 +262,13 @@ class _ReproductorPlaylistScreenState extends State<ReproductorPlaylistScreen> {
                           height: size.height * 0.35,
                           padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
                           child: Hero(
-                            tag: 'player-cover-${widget.playlistId}-${currentTrackIndex}',
+                            tag: 'player-cover-${widget.playlistId}-$currentTrackIndex',
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withAlpha(128),
                                     blurRadius: 20,
                                     offset: const Offset(0, 10),
                                   ),
@@ -351,7 +351,7 @@ class _ReproductorPlaylistScreenState extends State<ReproductorPlaylistScreen> {
                                   activeTrackColor: purpleColor,
                                   inactiveTrackColor: Colors.grey.shade300,
                                   thumbColor: purpleColor,
-                                  overlayColor: purpleColor.withOpacity(0.3),
+                                  overlayColor: purpleColor.withAlpha(77),
                                 ),
                                 child: Slider(
                                   value: _progress,
@@ -400,7 +400,7 @@ class _ReproductorPlaylistScreenState extends State<ReproductorPlaylistScreen> {
                                     padding: EdgeInsets.zero,
                                     icon: Icon(
                                       Icons.shuffle,
-                                      color: isShuffle ? Colors.black : Colors.black.withOpacity(0.6),
+                                      color: isShuffle ? Colors.black : Colors.black.withAlpha(153),
                                       size: 22,
                                     ),
                                     onPressed: _toggleShuffle,
@@ -446,7 +446,7 @@ class _ReproductorPlaylistScreenState extends State<ReproductorPlaylistScreen> {
                                     padding: EdgeInsets.zero,
                                     icon: Icon(
                                       isLooping ? Icons.repeat_one : Icons.repeat,
-                                      color: isLooping ? Colors.black : Colors.black.withOpacity(0.6),
+                                      color: isLooping ? Colors.black : Colors.black.withAlpha(153),
                                       size: 22,
                                     ),
                                     onPressed: _toggleLooping,

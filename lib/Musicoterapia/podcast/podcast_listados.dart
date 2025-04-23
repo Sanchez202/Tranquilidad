@@ -10,13 +10,13 @@ class PodcastListadosScreen extends StatefulWidget {
   final int podcastId;
 
   const PodcastListadosScreen({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.imageUrl,
     required this.isAsset,
     required this.podcastId,
-  }) : super(key: key);
+  });
 
   @override
   State<PodcastListadosScreen> createState() => _PodcastListadosScreenState();
@@ -168,31 +168,39 @@ class _PodcastListadosScreenState extends State<PodcastListadosScreen> {
   // Método modificado para navegar al reproductor de podcast
   void _navigateToPlayer(String title, String duration) {
     // Crear una descripción por defecto para cada episodio
-    String description = 'Este es un episodio de ${widget.title} que te ayudará a relajarte y a mejorar tu bienestar emocional. Escucha con atención y disfruta de la experiencia.';
-    
+    String description =
+        'Este es un episodio de ${widget.title} que te ayudará a relajarte y a mejorar tu bienestar emocional. Escucha con atención y disfruta de la experiencia.';
+
     // Crear la lista de episodios con el formato correcto
-    List<Map<String, dynamic>> episodes = podcastList.map((podcast) {
-      return {
-        'title': podcast['title'],
-        'duration': podcast['duration'],
-        'description': description,
-      };
-    }).toList();
-    
+    List<Map<String, dynamic>> episodes =
+        podcastList.map((podcast) {
+          return {
+            'title': podcast['title'],
+            'duration': podcast['duration'],
+            'description': description,
+          };
+        }).toList();
+
     // Encontrar el índice del episodio seleccionado
-    int episodeIndex = podcastList.indexWhere((podcast) => podcast['title'] == title);
+    int episodeIndex = podcastList.indexWhere(
+      (podcast) => podcast['title'] == title,
+    );
     if (episodeIndex == -1) episodeIndex = 0;
 
     // Navegar al reproductor de podcast
-    context.go('/musicoterapia/podcast/reproductor_podcast', extra: {
-      'podcastId': widget.podcastId,
-      'podcastTitle': widget.title,
-      'podcastHost': 'Reading Time', // Usar el mismo host que se muestra en la UI
-      'coverUrl': widget.imageUrl,
-      'isAsset': widget.isAsset,
-      'episodeIndex': episodeIndex,
-      'episodes': episodes,
-    });
+    context.go(
+      '/musicoterapia/podcast/reproductor_podcast',
+      extra: {
+        'podcastId': widget.podcastId,
+        'podcastTitle': widget.title,
+        'podcastHost':
+            'Reading Time', // Usar el mismo host que se muestra en la UI
+        'coverUrl': widget.imageUrl,
+        'isAsset': widget.isAsset,
+        'episodeIndex': episodeIndex,
+        'episodes': episodes,
+      },
+    );
   }
 
   @override
@@ -213,7 +221,9 @@ class _PodcastListadosScreenState extends State<PodcastListadosScreen> {
               ),
             ),
           ),
-          Container(color: Colors.white.withOpacity(0.7)),
+          Container(
+            color: const Color.fromARGB(255, 209, 187, 224).withAlpha(179),
+          ),
 
           // Contenido
           SafeArea(
@@ -243,7 +253,7 @@ class _PodcastListadosScreenState extends State<PodcastListadosScreen> {
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withAlpha(77),
                                   blurRadius: 10,
                                   offset: const Offset(0, 5),
                                 ),
@@ -353,7 +363,7 @@ class _PodcastListadosScreenState extends State<PodcastListadosScreen> {
                         // Botón favorito
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withAlpha(77),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -384,7 +394,7 @@ class _PodcastListadosScreenState extends State<PodcastListadosScreen> {
                         // Botón compartir
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withAlpha(77),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -477,10 +487,7 @@ class _PodcastListadosScreenState extends State<PodcastListadosScreen> {
                                       !podcastFavorites[index];
                                 });
                                 _showNotification(
-                                  '"${podcastList[index]['title']}" ' +
-                                      (podcastFavorites[index]
-                                          ? 'añadido a Tus Me Gusta'
-                                          : 'eliminado de Tus Me Gusta'),
+                                  '"${podcastList[index]['title']}" ${podcastFavorites[index] ? 'añadido a Tus Me Gusta' : 'eliminado de Tus Me Gusta'}',
                                 );
                               },
                             ),

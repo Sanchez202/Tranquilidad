@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
+import 'dart:developer';
 
 class PlaylistScreen extends StatefulWidget {
   const PlaylistScreen({super.key});
@@ -36,7 +37,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> with SingleTickerProvid
   ];
   
   // Lista de todas las playlists disponibles
-  List<PlaylistItem> _allPlaylists = [
+  final List<PlaylistItem> _allPlaylists = [
     // Playlists populares
     PlaylistItem(
       'Meditación Matutina',
@@ -338,7 +339,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> with SingleTickerProvid
       _showAnimatedNotification('Playlist creada con éxito');
       
     } catch (e) {
-      print('Error al crear playlist: $e');
+      log('Error al crear playlist: $e');
       // Mostrar notificación animada de error
       _showAnimatedNotification('Ocurrió un error al crear la playlist. Inténtalo nuevamente.');
     }
@@ -361,7 +362,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> with SingleTickerProvid
             ),
           ),
           // Light overlay for better readability
-          Container(color: Colors.white.withOpacity(0.7)),
+          Container(color: const Color.fromARGB(255, 209, 187, 224).withAlpha(179)),
           
           // Main content
           SafeArea(
@@ -432,7 +433,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> with SingleTickerProvid
                                     style: TextStyle(
                                       color: _selectedTabIndex == index 
                                           ? purpleColor
-                                          : Colors.grey,
+                                          : const Color.fromARGB(255, 0, 0, 0),
                                       fontWeight: _selectedTabIndex == index 
                                           ? FontWeight.bold 
                                           : FontWeight.normal,
