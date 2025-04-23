@@ -33,7 +33,7 @@ import '../alimentacion/inicio_alimentacion.dart';
 import '../alimentacion/informacion_frutas.dart';
 import '../alimentacion/seguimiento.dart';
 import 'package:tranquilidad_app/alimentacion/foro.dart';
-
+import '../iniciosesion/perfil.dart';
 final GoRouter _router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
@@ -48,6 +48,12 @@ final GoRouter _router = GoRouter(
             return mapa();
           },
         ),
+        GoRoute(
+  path: '/perfil',
+  builder: (BuildContext context, GoRouterState state) {
+    return ProfilePage();
+  },
+),
 
         ////MAPA DE SUEÑOS ////
         GoRoute(

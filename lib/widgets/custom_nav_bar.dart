@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomNavBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
   final Color primaryColor;
-
+  
   const CustomNavBar({
     super.key,
     required this.selectedIndex,
     required this.onItemSelected,
     this.primaryColor = const Color.fromARGB(255, 167, 131, 228),
   });
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,19 +35,22 @@ class CustomNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildNavItem('Módulos', FontAwesomeIcons.thLarge, 0),
-          _buildNavItem('Inicio', FontAwesomeIcons.house, 1),
-          _buildNavItem('Perfil', FontAwesomeIcons.userAlt, 2),
+          _buildNavItem(context, 'Módulos', FontAwesomeIcons.thLarge, 0, '/perfil'),
+          _buildNavItem(context, 'Inicio', FontAwesomeIcons.house, 1, '/inicio'),
+          _buildNavItem(context, 'Perfil', FontAwesomeIcons.userAlt, 2, '/perfil'),
         ],
       ),
     );
   }
-
-  Widget _buildNavItem(String text, IconData icon, int index) {
+  
+  Widget _buildNavItem(BuildContext context, String text, IconData icon, int index, String route) {
     final bool isSelected = selectedIndex == index;
-
+    
     return GestureDetector(
-      onTap: () => onItemSelected(index),
+      onTap: () {
+        onItemSelected(index);
+        context.go(route);
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         child: Column(
