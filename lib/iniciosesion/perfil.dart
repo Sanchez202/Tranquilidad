@@ -14,6 +14,13 @@ class _ProfilePageState extends State<ProfilePage> {
   String _bioText = "Escribe algo sobre ti...";
   final TextEditingController _bioController = TextEditingController();
   bool _isEditingBio = false;
+  
+  // Información personal adicional
+  final Map<String, String> _personalInfo = {
+    'Vive en': 'Madrid, Españannnnnnnnnn',
+    'Lugar de nacimiento': 'Valencia, España',
+    'Estudios': 'Grado en Psicología, Universidad Complutense de Madrid',
+  };
 
   // Datos de ejemplo para las tarjetas
   final List<Map<String, dynamic>> _cards = [
@@ -150,6 +157,51 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 24),
+                    
+                    // Tarjeta de Información Personal
+                    Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.person_outline,
+                                  color: Color(0xFF6C63FF),
+                                  size: 24,
+                                ),
+                                const SizedBox(width: 10),
+                                const Text(
+                                  'Información Personal',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF6C63FF),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                            ..._personalInfo.entries.map((entry) => Padding(
+                              padding: const EdgeInsets.only(bottom: 12),
+                              child: _buildInfoRow(
+                                entry.key,
+                                entry.value,
+                                _getIconForInfo(entry.key),
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                    ),
+                    
                     const SizedBox(height: 24),
                     
                     // Tarjeta de Biografía
@@ -324,6 +376,58 @@ class _ProfilePageState extends State<ProfilePage> {
           onItemSelected: _onItemTapped,
         ),
       ),
+    );
+  }
+
+  // Método para obtener el icono adecuado según el tipo de información
+  IconData _getIconForInfo(String infoType) {
+    switch (infoType) {
+      case 'Vive en':
+        return Icons.home_outlined;
+      case 'Lugar de nacimiento':
+        return Icons.location_on_outlined;
+      case 'Estudios':
+        return Icons.school_outlined;
+      default:
+        return Icons.info_outline;
+    }
+  }
+
+  // Widget para mostrar una fila de información personal
+  Widget _buildInfoRow(String label, String value, IconData icon) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(
+          icon,
+          size: 20,
+          color: const Color(0xFF6C63FF).withOpacity(0.7),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey[600],
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 

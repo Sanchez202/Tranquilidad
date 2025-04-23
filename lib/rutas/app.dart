@@ -7,6 +7,7 @@ import '../mapasueños/canva.dart';
 import '../mapasueños/seguimiento.dart';
 import '../mapasueños/iniciolibros.dart';
 import '../mapasueños/categoriaArte.dart';
+import '../mapasueños/vistalibros.dart';
 import '../rutinasEjercicios/inicioRutina.dart';
 import '../atencionprofesional/home.dart';
 import '../musicoterapia/inicio_musicoterapia.dart';
@@ -80,6 +81,7 @@ final GoRouter _router = GoRouter(
             return TaskBoard(); // Vista a la que quieres ir
           },
         ),
+        
         //rutinaa
         GoRoute(
           path: 'inicioRutina',
@@ -93,6 +95,9 @@ final GoRouter _router = GoRouter(
             return categoria(); // Vista a la que quieres ir
           },
         ),
+       
+         
+       
         ////Atencion Profesional ////
         GoRoute(
           path: 'home',

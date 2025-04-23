@@ -35,7 +35,7 @@ class CustomNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildNavItem(context, 'Módulos', FontAwesomeIcons.thLarge, 0, '/perfil'),
+          _buildNavItem(context, 'Módulos', FontAwesomeIcons.thLarge, 0, '/inicio'),
           _buildNavItem(context, 'Inicio', FontAwesomeIcons.house, 1, '/inicio'),
           _buildNavItem(context, 'Perfil', FontAwesomeIcons.userAlt, 2, '/perfil'),
         ],
