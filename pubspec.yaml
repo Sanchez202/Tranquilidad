@@ -38,6 +38,8 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   carousel_slider: ^5.0.0
   http: ^1.3.0
+  uuid: ^3.0.7
+  intl: ^0.18.0
  
 dev_dependencies:
   flutter_test:
@@ -103,6 +105,36 @@ flutter:
     - assets/MUSICOTERAPIA/podcast2.jpg
     - assets/MUSICOTERAPIA/podcast3.jpg
     - assets/MUSICOTERAPIA/podcast4.jpg
+
+    - assets/Alimentacion/Fondo_Test.png
+    - assets/Alimentacion/Fondo_Inicio.png
+    - assets/Alimentacion/fONDO_FRUTAS.jpg
+    - assets/Alimentacion/FrutasInf.jpg
+    - assets/Alimentacion/SEGUIMIENTO.png
+    - assets/Alimentacion/social_media.jpg
+    - assets/Alimentacion/manzana_verde.png
+    - assets/Alimentacion/banano.png
+    - assets/Alimentacion/mango.png
+    - assets/Alimentacion/maracuya.png
+    - assets/Alimentacion/pera.png
+    - assets/Alimentacion/naranja.png
+    - assets/Alimentacion/uvas.png
+    - assets/Alimentacion/mora.png
+    - assets/Alimentacion/kiwi.png
+    - assets/Alimentacion/sandia.png
+    - assets/Alimentacion/piña.png
+    - assets/Alimentacion/Ciruelas.png
+    - assets/Alimentacion/Frutos_rojos.png
+    - assets/Alimentacion/Papaya.png
+    - assets/Alimentacion/Higo.png
+    - assets/Alimentacion/Granada.png
+    - assets/Alimentacion/Grosella.png
+    - assets/Alimentacion/Mandarina.png
+    - assets/Alimentacion/Coco.png
+    - assets/Alimentacion/User1.png
+    - assets/Alimentacion/User2.png
+    - assets/Alimentacion/fondo_seguimiento.png
+    - assets/Alimentacion/manzana.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

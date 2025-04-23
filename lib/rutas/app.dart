@@ -24,7 +24,11 @@ import '../Musicoterapia/playlist/canciones_playlist.dart';
 import '../Musicoterapia/playlist/reproductor_playlist.dart';
 import '../musicoterapia/me_gusta/me_gusta_screen.dart';
 import '../musicoterapia/me_gusta/reproductor_me_gusta.dart';
-
+import '../alimentacion/test_bienestar.dart';
+import '../alimentacion/inicio_alimentacion.dart';
+import '../alimentacion/informacion_frutas.dart';
+import '../alimentacion/seguimiento.dart';
+import 'package:tranquilidad_app/alimentacion/foro.dart';
 
 final GoRouter _router = GoRouter(
   routes: <RouteBase>[
@@ -285,6 +289,47 @@ GoRoute(
   },
 ),
         //MUSICOTERAPIA//
+      //ALIMENTACION//
+                GoRoute(
+          path: 'test_bienestar',
+          builder: (BuildContext context, GoRouterState state) {
+            return const TestBienestar();
+          },
+        ),
+            GoRoute(
+        path: '/inicio_alimentacion',
+        builder: (context, state) => const InicioAlimentacion(),
+          ),
+          GoRoute(
+        path: '/alimentacion/informacion_frutas',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: const InformacionFrutas(),
+
+        ),
+      ),
+          GoRoute(
+          path: '/alimentacion/seguimiento',
+          builder: (context, state) => const SeguimientoScreen(),
+        ),
+
+          GoRoute(
+        path: '/informacion_frutas',
+        builder: (context, state) => const InformacionFrutas(),
+      ),
+
+
+      GoRoute(
+        path: '/alimentacion/foro',
+        builder: (context, state) => const ForumScreen(),
+      ),
+        
+      GoRoute(
+        path: '/alimentacion/seguimiento',  // Nueva ruta añadida
+        builder: (context, state) => const InformacionFrutas(),  // Nueva pantalla que se abrirá
+      ),
+        //ALIMENTACION//
+
       ],
     ),
   ],
