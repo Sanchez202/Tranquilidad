@@ -53,7 +53,7 @@ class _TranquilidadAppState extends State<TranquilidadApp> {
       'icon': Icons.self_improvement,
       'color': Color(0xFFC8E6C9), // Verde pastel
       'imageUrl': 'https://i.ibb.co/70qkNjZ/Whats-App-Image-2024-11-13-at-3-54-18-PM.jpg', // Imagen para Meditación
-      'route': '/meditacion', // Añadimos la ruta para la navegación
+      'route': '/DetallesLibroScreen', // Añadimos la ruta para la navegación
     },
     {
       'title': 'Naturaleza',

@@ -96,6 +96,14 @@ final GoRouter _router = GoRouter(
           },
         ),
        
+         GoRoute(
+  path: 'detalles-libro/:bookId',
+  builder: (BuildContext context, GoRouterState state) {
+    // Obtener el ID del libro de los parámetros de la ruta
+    final bookId = int.parse(state.pathParameters['bookId'] ?? '0');
+    return DetallesLibroScreen(bookId: bookId);
+  },
+),
          
        
         ////Atencion Profesional ////
