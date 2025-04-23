@@ -114,8 +114,9 @@ class _TaskBoardState extends State<TaskBoard> {
           ),
         ),
         child: SafeArea(
+          bottom: false, // Evita interferencias con el BottomNavigationBar
           child: Padding(
-            padding: const EdgeInsets.only(top: 70.0, bottom: 60.0),
+            padding: const EdgeInsets.only(top: 70.0),
             child: DefaultTabController(
               length: 3,
               child: Column(
@@ -127,6 +128,8 @@ class _TaskBoardState extends State<TaskBoard> {
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: TabBar(
+                      isScrollable: false, // Asegura que no sea scrollable
+                      labelPadding: const EdgeInsets.symmetric(horizontal: 4.0), // Reduce el padding horizontal
                       indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
                         color: const Color.fromARGB(255, 85, 2, 51).withOpacity(0.3),
@@ -135,72 +138,81 @@ class _TaskBoardState extends State<TaskBoard> {
                       unselectedLabelColor: Colors.white.withOpacity(0.7),
                       tabs: [
                         Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text('Tareas'),
-                              const SizedBox(width: 8.0),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.3),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Text(
-                                  '${_todoTasks.length}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                          child: FittedBox( // Envuelve el contenido en un FittedBox
+                            fit: BoxFit.scaleDown,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min, // Usa minimal size
+                              children: [
+                                const Text('Tareas'),
+                                const SizedBox(width: 4.0), // Reduce espacio entre texto y contador
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 1.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.3),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Text(
+                                    '${_todoTasks.length}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text('En Progreso'),
-                              const SizedBox(width: 8.0),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 1.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.3),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Text(
-                                  '${_inProgressTasks.length}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text('En Progreso'),
+                                const SizedBox(width: 4.0),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 1.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.3),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Text(
+                                    '${_inProgressTasks.length}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text('Completado'),
-                              const SizedBox(width: 8.0),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.3),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Text(
-                                  '${_completedTasks.length}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text('Completado'),
+                                const SizedBox(width: 4.0),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 1.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.3),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Text(
+                                    '${_completedTasks.length}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -208,6 +220,7 @@ class _TaskBoardState extends State<TaskBoard> {
                   ),
                   Expanded(
                     child: TabBarView(
+                      physics: const ClampingScrollPhysics(), // Previene el scroll excesivo entre tabs
                       children: [
                         // Tareas pendientes
                         _buildTaskList(
@@ -313,6 +326,7 @@ class _TaskBoardState extends State<TaskBoard> {
                   ),
                 )
               : ListView.builder(
+                  physics: const BouncingScrollPhysics(), // Añade rebote suave
                   itemCount: tasks.length,
                   itemBuilder: (context, index) {
                     return _buildTaskCard(tasks[index], color, actionGenerator(index), index);
@@ -320,25 +334,28 @@ class _TaskBoardState extends State<TaskBoard> {
                 ),
           ),
           if (showAddButton)
-            GestureDetector(
-              onTap: () {
-                // Lógica para añadir tarea
-                _showAddTaskDialog();
-              },
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 14.0),
-                margin: const EdgeInsets.only(top: 8.0),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple.shade200,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: const Center(
-                  child: Text(
-                    '+ Añadir tarea',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0), // Añade padding inferior
+              child: GestureDetector(
+                onTap: () {
+                  // Lógica para añadir tarea
+                  _showAddTaskDialog();
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 14.0),
+                  margin: const EdgeInsets.only(top: 8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple.shade200,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      '+ Añadir tarea',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -405,24 +422,30 @@ class _TaskBoardState extends State<TaskBoard> {
             ),
           ),
           if (actions.isNotEmpty)
-            Padding(
+            Container(
+              width: double.infinity,
               padding: const EdgeInsets.all(12.0),
-              child: Wrap(
-                spacing: 8.0,
-                runSpacing: 8.0,
-                children: actions.map((action) {
-                  return ElevatedButton(
-                    onPressed: action.onPressed,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: action.color,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+              child: SingleChildScrollView( // Permite scroll horizontal si hay muchos botones
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                child: Row( // Cambia Wrap por Row con scroll horizontal
+                  children: actions.map((action) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: ElevatedButton(
+                        onPressed: action.onPressed,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: action.color,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        child: Text(action.label),
                       ),
-                    ),
-                    child: Text(action.label),
-                  );
-                }).toList(),
+                    );
+                  }).toList(),
+                ),
               ),
             ),
         ],
@@ -442,6 +465,7 @@ class _TaskBoardState extends State<TaskBoard> {
 
     showDialog(
       context: context,
+      barrierDismissible: false, // Evita cierre accidental
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Añadir nueva tarea'),
@@ -498,6 +522,7 @@ class _TaskBoardState extends State<TaskBoard> {
 
     showDialog(
       context: context,
+      barrierDismissible: false, // Evita cierre accidental
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Editar tarea'),

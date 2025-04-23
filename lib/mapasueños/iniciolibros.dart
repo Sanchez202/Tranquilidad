@@ -2,6 +2,7 @@ import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:go_router/go_router.dart'; // Importamos go_router
 
 class iniciolibros extends StatelessWidget {
   const iniciolibros({super.key});
@@ -38,35 +39,42 @@ class _TranquilidadAppState extends State<TranquilidadApp> {
 
   // Lista de categorías para el carrusel con URLs de imágenes específicas
   final List<Map<String, dynamic>> categories = [
-    {
-      'title': 'Arte',
-      'icon': Icons.palette,
-      'color': Color(0xFFBBDEFB), // Azul pastel
-      'imageUrl': 'https://i.ibb.co/GKszgX1/Whats-App-Image-2024-11-13-at-3-49-57-PM.jpg', // Imagen para Arte
-    },
+  {
+    'title': 'Arte',
+    'icon': Icons.palette,
+    'color': Color(0xFFBBDEFB),
+    'imageUrl': 'https://i.ibb.co/GKszgX1/Whats-App-Image-2024-11-13-at-3-49-57-PM.jpg',
+    'route': '/categoriaArte', // Debe coincidir con la ruta en app.dart
+  },
+  // ... actualiza las demás categorías de manera similar
+
     {
       'title': 'Meditación',
       'icon': Icons.self_improvement,
       'color': Color(0xFFC8E6C9), // Verde pastel
       'imageUrl': 'https://i.ibb.co/70qkNjZ/Whats-App-Image-2024-11-13-at-3-54-18-PM.jpg', // Imagen para Meditación
+      'route': '/meditacion', // Añadimos la ruta para la navegación
     },
     {
       'title': 'Naturaleza',
       'icon': Icons.nature,
       'color': Color(0xFFB2DFDB), // Teal pastel
       'imageUrl': 'https://i.ibb.co/wFBm0872/Whats-App-Image-2024-11-13-at-3-59-12-PM.jpg', // Imagen para Naturaleza
+      'route': '/naturaleza', // Añadimos la ruta para la navegación
     },
     {
       'title': 'Poesía',
       'icon': Icons.format_quote,
       'color': Color(0xFFE1BEE7), // Morado pastel
       'imageUrl': 'https://i.ibb.co/tMFS1cw2/Whats-App-Image-2024-11-13-at-4-00-57-PM.jpg', // Imagen para Poesía
+      'route': '/poesia', // Añadimos la ruta para la navegación
     },
     {
       'title': 'Superación Personal',
       'icon': Icons.trending_up,
       'color': Color(0xFFFFE0B2), // Naranja pastel
       'imageUrl': 'https://i.ibb.co/SDY8SS5J/Whats-App-Image-2024-11-13-at-3-43-13-PM.jpg', // Imagen para Superación Personal
+      'route': '/superacion', // Añadimos la ruta para la navegación
     },
   ];
 
@@ -161,7 +169,7 @@ class _TranquilidadAppState extends State<TranquilidadApp> {
                 // Carrusel con indicadores
                 SizedBox(
                   height: 190,
-                  child: InfiniteCarousel(),
+                  child: InfiniteCarousel(categories: categories), // Pasamos las categorías al carrusel
                 ),
                 
                 const SizedBox(height: 20), // Espacio reducido
@@ -194,7 +202,8 @@ class _TranquilidadAppState extends State<TranquilidadApp> {
         splashColor: favoriteColor.withOpacity(0.2),
         highlightColor: favoriteColor.withOpacity(0.1),
         onTap: () {
-          // Handle favorites tap
+          // Navegar a la página de favoritos con go_router
+          context.push('/favoritos');
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -258,7 +267,8 @@ class _TranquilidadAppState extends State<TranquilidadApp> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Handle favorites explore
+                      // Navegar a la página de favoritos con go_router
+                      context.push('/favoritos');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: lightPurple,
@@ -283,7 +293,9 @@ class _TranquilidadAppState extends State<TranquilidadApp> {
 
 // Widget mejorado para el carrusel infinito con indicadores de posición
 class InfiniteCarousel extends StatefulWidget {
-  const InfiniteCarousel({super.key});
+  final List<Map<String, dynamic>> categories; // Recibimos las categorías como parámetro
+  
+  const InfiniteCarousel({super.key, required this.categories});
 
   @override
   _InfiniteCarouselState createState() => _InfiniteCarouselState();
@@ -295,53 +307,19 @@ class _InfiniteCarouselState extends State<InfiniteCarousel> {
   final Color lightPurple = Color(0xFF9575CD);
   Timer? _autoScrollTimer;
   
-  // Lista de categorías para el carrusel con URLs de imágenes específicas
-  final List<Map<String, dynamic>> categories = [
-    {
-      'title': 'Arte',
-      'icon': Icons.palette,
-      'color': Color(0xFFBBDEFB), // Azul pastel
-      'imageUrl': 'https://i.ibb.co/GKszgX1/Whats-App-Image-2024-11-13-at-3-49-57-PM.jpg', // Imagen para Arte
-    },
-    {
-      'title': 'Meditación',
-      'icon': Icons.self_improvement,
-      'color': Color(0xFFC8E6C9), // Verde pastel
-      'imageUrl': 'https://i.ibb.co/70qkNjZ/Whats-App-Image-2024-11-13-at-3-54-18-PM.jpg', // Imagen para Meditación
-    },
-    {
-      'title': 'Naturaleza',
-      'icon': Icons.nature,
-      'color': Color(0xFFB2DFDB), // Teal pastel
-      'imageUrl': 'https://i.ibb.co/wFBm0872/Whats-App-Image-2024-11-13-at-3-59-12-PM.jpg', // Imagen para Naturaleza
-    },
-    {
-      'title': 'Poesía',
-      'icon': Icons.format_quote,
-      'color': Color(0xFFE1BEE7), // Morado pastel
-      'imageUrl': 'https://i.ibb.co/tMFS1cw2/Whats-App-Image-2024-11-13-at-4-00-57-PM.jpg', // Imagen para Poesía
-    },
-    {
-      'title': 'Superación Personal',
-      'icon': Icons.trending_up,
-      'color': Color(0xFFFFE0B2), // Naranja pastel
-      'imageUrl': 'https://i.ibb.co/SDY8SS5J/Whats-App-Image-2024-11-13-at-3-43-13-PM.jpg', // Imagen para Superación Personal
-    },
-  ];
-  
   @override
   void initState() {
     super.initState();
     
     // Inicializamos el controlador en la página del medio para permitir desplazamiento bidireccional
     _pageController = PageController(
-      initialPage: categories.length * 100, // Un número grande para simular infinito
+      initialPage: widget.categories.length * 100, // Un número grande para simular infinito
       viewportFraction: 0.5, // Muestra dos elementos a la vez parcialmente
     );
     
     // Actualizar el indicador de página cuando cambia
     _pageController.addListener(() {
-      int page = _pageController.page!.round() % categories.length;
+      int page = _pageController.page!.round() % widget.categories.length;
       if (_currentPage != page) {
         setState(() {
           _currentPage = page;
@@ -382,8 +360,8 @@ class _InfiniteCarouselState extends State<InfiniteCarousel> {
             controller: _pageController,
             itemBuilder: (context, index) {
               // Usamos el módulo para obtener el índice real de la categoría
-              final actualIndex = index % categories.length;
-              final category = categories[actualIndex];
+              final actualIndex = index % widget.categories.length;
+              final category = widget.categories[actualIndex];
               
               return Container(
                 width: 160,
@@ -393,7 +371,8 @@ class _InfiniteCarouselState extends State<InfiniteCarousel> {
                   title: category['title'],
                   icon: category['icon'],
                   color: category['color'],
-                  imageUrl: category['imageUrl'], // Pasamos la URL de la imagen específica
+                  imageUrl: category['imageUrl'],
+                  route: category['route'], // Pasamos la ruta para la navegación
                 ),
               );
             },
@@ -415,7 +394,7 @@ class _InfiniteCarouselState extends State<InfiniteCarousel> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
-        categories.length,
+        widget.categories.length,
         (index) => _buildPageDot(index),
       ),
     );
@@ -426,7 +405,7 @@ class _InfiniteCarouselState extends State<InfiniteCarousel> {
     bool isActive = _currentPage == index;
     
     // Obtenemos el color de la categoría para usarlo en el indicador
-    Color dotColor = categories[index]['color'];
+    Color dotColor = widget.categories[index]['color'];
     
     return GestureDetector(
       onTap: () {
@@ -461,125 +440,148 @@ class _InfiniteCarouselState extends State<InfiniteCarousel> {
     );
   }
   
-  // Category Card para el Carrusel - MEJORADO con imagen específica
+  // Category Card para el Carrusel - MEJORADO con imagen específica y botón de navegación
   Widget _buildCategoryCard({
     required BuildContext context,
     required String title,
     required IconData icon,
     required Color color,
-    required String imageUrl, // Nuevo parámetro para la URL de la imagen
+    required String imageUrl,
+    required String route, // Añadimos el parámetro de ruta
   }) {
-    return Card(
-      elevation: 6,
-      shadowColor: color.withOpacity(0.4),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
-      ),
-      color: Colors.black.withOpacity(0.7),
-      child: Stack(
-        children: [
-          // Imagen a tamaño completo con desvanecimiento
-          ClipRRect(
-            borderRadius: BorderRadius.circular(18),
-            child: Stack(
-              children: [
-                // Imagen - Ahora usando la URL de imagen específica para cada categoría
-                Image.network(
-                  imageUrl, // Usamos la URL específica para esta categoría
-                  height: double.infinity,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => 
-                    Container(
-                      color: color.withOpacity(0.3),
-                      child: Center(child: Icon(Icons.image_not_supported)),
-                    ),
-                ),
-                // Gradiente que se desvanece en la parte inferior
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.transparent,
-                        Colors.transparent,
-                        Colors.black.withOpacity(0.1),
-                        Colors.black.withOpacity(0.6),
-                        Colors.black.withOpacity(0.9),
-                      ],
-                      stops: [0.0, 0.5, 0.65, 0.8, 0.95],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          
-          // Contenido en la parte inferior
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return InkWell(
+      onTap: () {
+        // Navegar a la página de la categoría con go_router
+        context.push(route);
+      },
+      borderRadius: BorderRadius.circular(18),
+      splashColor: color.withOpacity(0.3),
+      highlightColor: color.withOpacity(0.2),
+      child: Card(
+        elevation: 6,
+        shadowColor: color.withOpacity(0.4),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18),
+        ),
+        color: Colors.black.withOpacity(0.7),
+        child: Stack(
+          children: [
+            // Imagen a tamaño completo con desvanecimiento
+            ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: Stack(
                 children: [
-                  // Icon y título
-                  Expanded(
-                    child: Row(
-                      children: [
-                        // Icono
-                        Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: color,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black38,
-                                blurRadius: 4,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Icon(
-                            icon,
-                            color: Colors.white,
-                            size: 16,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        // Título
-                        Flexible(
-                          child: Text(
-                            title,
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black,
-                                  offset: Offset(0, 1),
-                                  blurRadius: 2,
-                                ),
-                              ],
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
+                  // Imagen - Ahora usando la URL de imagen específica para cada categoría
+                  Image.network(
+                    imageUrl, // Usamos la URL específica para esta categoría
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => 
+                      Container(
+                        color: color.withOpacity(0.3),
+                        child: Center(child: Icon(Icons.image_not_supported)),
+                      ),
+                  ),
+                  // Gradiente que se desvanece en la parte inferior
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          Colors.transparent,
+                          Colors.black.withOpacity(0.1),
+                          Colors.black.withOpacity(0.6),
+                          Colors.black.withOpacity(0.9),
+                        ],
+                        stops: [0.0, 0.5, 0.65, 0.8, 0.95],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+            
+            // Contenido en la parte inferior
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Icon y título
+                    Expanded(
+                      child: Row(
+                        children: [
+                          // Icono
+                          Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: color,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black38,
+                                  blurRadius: 4,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Icon(
+                              icon,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          // Título
+                          Flexible(
+                            child: Text(
+                              title,
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black,
+                                    offset: Offset(0, 1),
+                                    blurRadius: 2,
+                                  ),
+                                ],
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // Botón de navegación
+                    Container(
+                      padding: EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        color: color.withOpacity(0.8),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                        size: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

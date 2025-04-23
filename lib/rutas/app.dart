@@ -6,6 +6,7 @@ import '../mapasueños/iniciomapados.dart';
 import '../mapasueños/canva.dart';
 import '../mapasueños/seguimiento.dart';
 import '../mapasueños/iniciolibros.dart';
+import '../mapasueños/categoriaArte.dart';
 import '../rutinasEjercicios/inicioRutina.dart';
 import '../atencionprofesional/home.dart';
 import '../musicoterapia/inicio_musicoterapia.dart';
@@ -78,6 +79,12 @@ final GoRouter _router = GoRouter(
           path: 'inicioRutina',
           builder: (BuildContext context, GoRouterState state) {
             return InicioRutinaScreen(); // Vista a la que quieres ir
+          },
+        ),
+         GoRoute(
+          path: 'categoriaArte',
+          builder: (BuildContext context, GoRouterState state) {
+            return categoria(); // Vista a la que quieres ir
           },
         ),
         ////Atencion Profesional ////
