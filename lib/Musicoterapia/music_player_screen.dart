@@ -59,7 +59,7 @@ class MusicApp extends StatelessWidget {
 }
 
 class API {
-  final String baseUrl = 'https://back1-production-67bf.up.railway.app/v1/audios'; // Replace with your actual API URL
+  final String baseUrl = 'https://back1-production-67bf.up.railway.app'; // Replace with your actual API URL
 
   Future<Map<String, dynamic>> getGenre(String genreId) async {
     final response = await http.get(Uri.parse('$baseUrl/genres/$genreId'));
