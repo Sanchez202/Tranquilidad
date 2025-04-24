@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
 import '../Alimentacion/models/post.dart';
@@ -95,21 +94,25 @@ Widget build(BuildContext context) {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundImage: AssetImage('assets/Alimentacion/User1.png'), // Asegúrate de tener esta imagen
-                              ),
-                              const SizedBox(width: 10),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text('Usuario Demo', style: TextStyle(fontWeight: FontWeight.bold)),
-                                  Text(post.content, style: const TextStyle(fontSize: 16)),
-                                ],
-                              ),
-                            ],
-                          ),
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: AssetImage('assets/Alimentacion/User1.png'),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text('Usuario Demo', style: TextStyle(fontWeight: FontWeight.bold)),
+                                      Text(post.content, style: const TextStyle(fontSize: 16)),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+
                           const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -18,21 +18,19 @@ class _InicioAlimentacionState extends State<InicioAlimentacion> {
     InfoCard(
       title: 'Información Frutas',
       description: 
-          'Los usuarios podrán identificar cómo ciertos alimentos influyen en '
-          'su estado de ánimo, niveles de energía y salud del organismo. Esta '
-          'herramienta ayuda a establecer hábitos alimenticios saludables que '
-          'contribuyen a reducir el estrés, mejorar la concentración y fortalecer '
-          'el sistema inmunológico.',
+          'Descubre cómo ciertos alimentos influyen en tu estado de ánimo,'
+          'energía y salud general. Esta herramienta te guía para elegir'
+          'frutas que ayudan a reducir el estrés, mejorar la concentración'
+          'y fortalecer tu sistema inmunológico.',
       imageUrl: 'assets/ALIMENTACION/FrutasInf.jpg',
       route: '/alimentacion/informacion_frutas', // Updated route path
     ),
     InfoCard(
       title: 'Seguimiento de proceso',
       description: 
-          'El seguimiento de proceso permitirá rastrear y monitorear el progreso del '
-          'usuario a lo largo del tiempo. El seguimiento de procesos se refiere '
-          'al registro y análisis continuo de las acciones y avances realizados por '
-          'el usuario en su meta personal.',
+          'Monitorea tu peso, controla tus macros' 
+          '(proteínas, grasas y carbohidratos) y añade frutas a' 
+          ' tu alimentación diaria para alcanzar tus metas de forma saludable.',
       imageUrl: 'assets/ALIMENTACION/SEGUIMIENTO.png',
       route: '/alimentacion/seguimiento',
     ),
@@ -94,6 +92,7 @@ class _InicioAlimentacionState extends State<InicioAlimentacion> {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 75, 18, 167),
                   ),
                 ),
                 const SizedBox(height: 20),

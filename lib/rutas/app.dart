@@ -390,10 +390,14 @@ GoRoute(
         builder: (context, state) => const ForumScreen(),
       ),
         
+     
+
       GoRoute(
-        path: '/alimentacion/seguimiento',  // Nueva ruta añadida
-        builder: (context, state) => const InformacionFrutas(),  // Nueva pantalla que se abrirá
-      ),
+          path: '/alimentacion/seguimiento',
+          builder: (BuildContext context, GoRouterState state) {
+            return const InformacionFrutas();
+          },
+        ),
         //ALIMENTACION//
 
       ],

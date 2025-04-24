@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
-import 'package:tranquilidad_app/Alimentacion/seguimiento.dart';
 
 class TestBienestar extends StatefulWidget {
   const TestBienestar({super.key});
