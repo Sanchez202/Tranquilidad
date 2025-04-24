@@ -1,23 +1,23 @@
-  import 'package:flutter/material.dart';
-  import 'package:go_router/go_router.dart';
-  import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
-  import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
+import 'package:flutter/material.dart';
+import 'dart:math' show pi;
+import 'package:go_router/go_router.dart';
+import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
+import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
 
-  class InformacionFrutas extends StatefulWidget {
-    const InformacionFrutas({super.key});
+class InformacionFrutas extends StatefulWidget {
+  const InformacionFrutas({super.key});
 
-    @override
-    State<InformacionFrutas> createState() => _InformacionFrutasState();
+  @override
+  State<InformacionFrutas> createState() => _InformacionFrutasState();
+}
 
-    
-  }
+class _InformacionFrutasState extends State<InformacionFrutas> {
+  int _selectedIndex = 1;
+  int? _focusedCardIndex; // Para controlar qué tarjeta está enfocada/volteada
 
-  class _InformacionFrutasState extends State<InformacionFrutas> {
-    int _selectedIndex = 1;
-
-    // Lista de frutas con su información en el orden especificado
-    final List<FruitInfo> _fruitList = [
-      FruitInfo(
+  // Lista de frutas con su información en el orden especificado
+  final List<FruitInfo> _fruitList = [
+    FruitInfo(
         name: 'Manzana',
         description:
             'Las manzanas son conocidas por ser una buena fuente de fibra, especialmente pectina, que puede ayudar a mantener niveles saludables de colesterol. También contienen antioxidantes como quercetina, que puede tener propiedades antiinflamatorias.',
@@ -35,7 +35,7 @@
         averageWeight: '120-150 gramos',
         color: 'Amarillo cuando maduro',
         commonUses: 'Consumo crudo, en batidos, postres y horneados',
-        imageUrl: 'assets/ALIMENTACION/banano.png',
+        imageUrl: 'assets/Alimentacion/banano.png',
       ),
       FruitInfo(
         name: 'Mango',
@@ -45,7 +45,7 @@
         averageWeight: '200-300 gramos',
         color: 'Verde, amarillo, naranja o rojo según madurez',
         commonUses: 'Consumo fresco, batidos, salsas, ensaladas y postres',
-        imageUrl: 'assets/ALIMENTACION/mango.png',
+        imageUrl: 'assets/Alimentacion/mango.png',
       ),
       FruitInfo(
         name: 'Maracuyá',
@@ -55,7 +55,7 @@
         averageWeight: '50-80 gramos',
         color: 'Amarillo o morado según la variedad',
         commonUses: 'Jugos, postres, salsas y cócteles',
-        imageUrl: 'assets/ALIMENTACION/maracuya.png',
+        imageUrl: 'assets/Alimentacion/maracuya.png',
       ),
       FruitInfo(
         name: 'Pera',
@@ -65,7 +65,7 @@
         averageWeight: '150-200 gramos',
         color: 'Verde, amarillo o rojizo según la variedad',
         commonUses: 'Consumo fresco, en ensaladas, horneados y conservas',
-        imageUrl: 'assets/ALIMENTACION/pera.png',
+        imageUrl: 'assets/Alimentacion/pera.png',
       ),
       FruitInfo(
         name: 'Naranja',
@@ -75,7 +75,7 @@
         averageWeight: '130-180 gramos',
         color: 'Naranja brillante cuando madura',
         commonUses: 'Consumo fresco, jugos, mermeladas y repostería',
-        imageUrl: 'assets/ALIMENTACION/naranja.png',
+        imageUrl: 'assets/Alimentacion/naranja.png',
       ),
       FruitInfo(
         name: 'Uvas',
@@ -85,7 +85,7 @@
         averageWeight: '5-10 gramos por uva',
         color: 'Verde, rojo, púrpura o negro, según la variedad',
         commonUses: 'Consumo fresco, vino, pasas, jugos y mermeladas',
-        imageUrl: 'assets/ALIMENTACION/uvas.png',
+        imageUrl: 'assets/Alimentacion/uvas.png',
       ),
       FruitInfo(
         name: 'Mora',
@@ -95,7 +95,7 @@
         averageWeight: '3-5 gramos por unidad',
         color: 'Negro brillante cuando madura',
         commonUses: 'Consumo fresco, mermeladas, postres y batidos',
-        imageUrl: 'assets/ALIMENTACION/mora.png',
+        imageUrl: 'assets/Alimentacion/mora.png',
       ),
       FruitInfo(
         name: 'Kiwi',
@@ -105,7 +105,7 @@
         averageWeight: '50-80 gramos',
         color: 'Marrón exterior y verde brillante interior',
         commonUses: 'Consumo fresco, ensaladas de frutas, postres y smoothies',
-        imageUrl: 'assets/ALIMENTACION/kiwi.png',
+        imageUrl: 'assets/Alimentacion/kiwi.png',
       ),
       FruitInfo(
         name: 'Sandía',
@@ -115,7 +115,7 @@
         averageWeight: '5-15 kilogramos',
         color: 'Piel verde con franjas, pulpa roja o amarilla',
         commonUses: 'Consumo fresco, zumos, ensaladas y postres helados',
-        imageUrl: 'assets/ALIMENTACION/sandia.png',
+        imageUrl: 'assets/Alimentacion/sandia.png',
       ),
       FruitInfo(
         name: 'Piña',
@@ -125,7 +125,7 @@
         averageWeight: '1-2 kilogramos',
         color: 'Piel marrón y pulpa amarilla dorada',
         commonUses: 'Consumo fresco, jugos, postres y platos salados',
-        imageUrl: 'assets/ALIMENTACION/piña.png',
+        imageUrl: 'assets/Alimentacion/piña.png',
       ),
       FruitInfo(
         name: 'Ciruela',
@@ -135,7 +135,7 @@
         averageWeight: '30-100 gramos según variedad',
         color: 'Rojo, morado, amarillo o verde según la variedad',
         commonUses: 'Consumo fresco, secas (ciruelas pasas), mermeladas y postres',
-        imageUrl: 'assets/ALIMENTACION/uvas.png',
+        imageUrl: 'assets/Alimentacion/Ciruela.png',
       ),
       FruitInfo(
         name: 'Frutos Rojos',
@@ -145,7 +145,7 @@
         averageWeight: 'Variable según el tipo (1-20 gramos por unidad)',
         color: 'Tonos rojos, azules y morados',
         commonUses: 'Consumo fresco, postres, batidos, mermeladas y repostería',
-        imageUrl: 'assets/ALIMENTACION/Frutos_rojos.png',
+        imageUrl: 'assets/Alimentacion/Frutos_rojos.png',
       ),
       FruitInfo(
         name: 'Papaya',
@@ -155,7 +155,7 @@
         averageWeight: '500-1000 gramos',
         color: 'Piel amarilla-verdosa, pulpa naranja o rojiza',
         commonUses: 'Consumo fresco, ensaladas, batidos y como ablandador de carnes',
-        imageUrl: 'assets/ALIMENTACION/Papaya.png',
+        imageUrl: 'assets/Alimentacion/Papaya.png',
       ),
       FruitInfo(
         name: 'Higo',
@@ -165,7 +165,7 @@
         averageWeight: '40-60 gramos',
         color: 'Verde, morado o negro según variedad y madurez',
         commonUses: 'Consumo fresco, secos, en postres y platos salados',
-        imageUrl: 'assets/ALIMENTACION/Higo.png',
+        imageUrl: 'assets/Alimentacion/Higo.png',
       ),
       FruitInfo(
         name: 'Granada',
@@ -175,7 +175,7 @@
         averageWeight: '150-200 gramos',
         color: 'Exterior rojizo, semillas internas rojas brillantes',
         commonUses: 'Consumo de los arilos, jugos, salsas y en cocina internacional',
-        imageUrl: 'assets/ALIMENTACION/Granada.png',
+        imageUrl: 'assets/Alimentacion/Granada.png',
       ),
       FruitInfo(
         name: 'Grosella',
@@ -185,7 +185,7 @@
         averageWeight: '1-2 gramos por unidad',
         color: 'Rojo, negro o blanco según la variedad',
         commonUses: 'Mermeladas, jaleas, zumos, postres y salsas',
-        imageUrl: 'assets/ALIMENTACION/Grosella.png',
+        imageUrl: 'assets/Alimentacion/Grosella.png',
       ),
       FruitInfo(
         name: 'Mandarina',
@@ -195,7 +195,7 @@
         averageWeight: '80-120 gramos',
         color: 'Naranja intenso cuando madura',
         commonUses: 'Consumo fresco, zumos, postres y mermeladas',
-        imageUrl: 'assets/ALIMENTACION/Mandarina.png',
+        imageUrl: 'assets/Alimentacion/Mandarina.png',
       ),
       FruitInfo(
         name: 'Coco',
@@ -205,231 +205,375 @@
         averageWeight: '1.5-2.5 kilogramos',
         color: 'Marrón exterior, pulpa blanca y agua transparente',
         commonUses: 'Agua, leche, aceite, pulpa, en cocina, postres y cosméticos',
-        imageUrl: 'assets/ALIMENTACION/Coco.png',
+        imageUrl: 'assets/Alimentacion/Coco.png',
       ),
     ];
 
-    void _onItemTapped(int index) {
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    if (index == 0) {
+      // Navegar a Módulos
+      context.go('/modulos');
+    } else if (index == 2) {
+      // Navegar a Perfil
+      context.go('/perfil');
+    }
+  }
+
+  // Función para enfocar/desenfocar una tarjeta específica
+    void _toggleCardFocus(int index) 
+      
+      {
       setState(() {
-        _selectedIndex = index;
+        // Si ya está enfocada, la desenfocamos
+        if (_focusedCardIndex == index) {
+          _focusedCardIndex = null;
+        } else {
+          // Si no está enfocada o hay otra enfocada, enfocamos esta
+          _focusedCardIndex = index;
+        }
       });
-      if (index == 0) {
-        // Navegar a Módulos
-        context.go('/modulos');
-      } else if (index == 2) {
-        // Navegar a Perfil
-        context.go('/perfil');
-      }
     }
 
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: const CustomAppBar(),
-        body: Stack(
-          children: [
-            // Background image
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/ALIMENTACION/fONDO_FRUTAS.jpg"),
-                  fit: BoxFit.cover,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: const CustomAppBar(),
+      body: Stack(
+        children: [
+          // Background image
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/ALIMENTACION/fONDO_FRUTAS.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          // Light overlay for better readability
+          Container(color: const Color.fromARGB(255, 206, 206, 206).withOpacity(0.7)),
+          
+          // Main content
+          SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 10),
+                const Text(
+                  'INFORMACIÓN DE FRUTAS',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 75, 18, 167),
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-              ),
-            ),
-            // Light overlay for better readability
-            Container(color: const Color.fromARGB(255, 206, 206, 206).withOpacity(0.7)),
-            
-            // Main content
-            SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 10),
-                  const Text(
-                    'INFORMACIÓN DE FRUTAS',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 75, 18, 167),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 20),
-                  
-                  // Grid of fruit cards
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: GridView.builder(
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 0.58, // Aún más reducido para evitar desbordamiento
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                        ),
-                        itemCount: _fruitList.length,
-                        itemBuilder: (context, index) {
-                          return _buildFruitCard(_fruitList[index]);
-                        },
+                const SizedBox(height: 20),
+                
+                // Grid of fruit cards
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.58,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
                       ),
+                      itemCount: _fruitList.length,
+                      itemBuilder: (context, index) {
+                        // Determinar si esta tarjeta está enfocada o no
+                        bool isFocused = _focusedCardIndex == index;
+                        bool isAnyCardFocused = _focusedCardIndex != null;
+                        
+                        // Aplicar efectos visuales según el estado
+                        return AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        transform: isFocused 
+                            ? (Matrix4.identity()..translate(0.0, -10.0, 50.0))
+                            : Matrix4.identity(),
+                        transformAlignment: Alignment.center,
+                        child: FlipCard(
+                          fruit: _fruitList[index],
+                          onTap: () => _toggleCardFocus(index),
+                          isFocused: isFocused,
+                          isBlurred: isAnyCardFocused && !isFocused,
+                        ),
+                      );
+                      },
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
-        bottomNavigationBar: CustomNavBar(
-          selectedIndex: _selectedIndex,
-          onItemSelected: _onItemTapped,
-          primaryColor: const Color.fromARGB(255, 148, 66, 255),
-        ),
-      );
-    }
+          ),
+        ],
+      ),
+      bottomNavigationBar: CustomNavBar(
+        selectedIndex: _selectedIndex,
+        onItemSelected: _onItemTapped,
+        primaryColor: const Color.fromARGB(255, 148, 66, 255),
+      ),
+    );
+  }
+}
 
-    Widget _buildFruitCard(FruitInfo fruit) {
-      return Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(
+// FlipCard Widget para implementar el efecto de volteo
+class FlipCard extends StatefulWidget {
+  final FruitInfo fruit;
+  final VoidCallback onTap;
+  final bool isFocused;
+  final bool isBlurred;
+  
+  const FlipCard({
+    required this.fruit,
+    required this.onTap,
+    required this.isFocused,
+    required this.isBlurred,
+    Key? key,
+  }) : super(key: key);
+  
+  @override
+  _FlipCardState createState() => _FlipCardState();
+}
+
+class _FlipCardState extends State<FlipCard> {
+  bool _showFront = true;
+  
+  void _toggleCard() {
+    setState(() {
+      _showFront = !_showFront;
+    });
+    widget.onTap();
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _toggleCard,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        // Aplicar desenfoque si corresponde
+        foregroundDecoration: widget.isBlurred
+            ? BoxDecoration(
+                color: Colors.white.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(15),
+              )
+            : null,
+        // Elevar la tarjeta seleccionada
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
+          boxShadow: widget.isFocused
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 15,
+                    spreadRadius: 5,
+                  )
+                ]
+              : [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 5,
+                    spreadRadius: 1,
+                  )
+                ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Fruit Image - Modificado para mostrar la imagen completa
-            Container(
-              height: 120,
-              padding: const EdgeInsets.all(8),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-                color: Colors.white,
-              ),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 600),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            final rotateAnimation = Tween(begin: pi, end: 0.0).animate(animation);
+            return AnimatedBuilder(
+              animation: rotateAnimation,
+              child: child,
+              builder: (context, widget) {
+                final isUnder = (ValueKey(_showFront) != child.key);
+                var tilt = ((rotateAnimation.value - pi/2).abs() - pi/2) / pi/2;
+                var progress = (rotateAnimation.value / pi);
+                var tiltRotation = progress < 0.5 ? (progress * 2 * pi/8) : ((1 - progress) * 2 * pi/8);
+                
+                return Transform(
+                  transform: Matrix4.rotationY(rotateAnimation.value)
+                    ..setEntry(3, 0, (isUnder ? -0.003 : 0.003) * tilt)
+                    ..rotateX(tiltRotation),
+                  alignment: Alignment.center,
+                  child: widget,
+                );
+              },
+            );
+          },
+          child: _showFront
+              ? _buildFrontCard(widget.fruit)
+              : _buildBackCard(widget.fruit),
+        ),
+      ),
+    );
+  }
+  
+  // Construir la cara frontal de la tarjeta (con la imagen)
+  Widget _buildFrontCard(FruitInfo fruit) {
+    return Card(
+      key: const ValueKey(true),
+      elevation: 0,
+      color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Imagen de la fruta
+          Expanded(
+            flex: 3,
+            child: Container(
+              padding: const EdgeInsets.all(15),
               child: Center(
                 child: Image.asset(
                   fruit.imageUrl,
-                  height: 100,
-                  fit: BoxFit.contain, // Cambiado a contain para ver la imagen completa
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
-            
-            // Fruit Name
-            Container(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Text(
-                fruit.name,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 75, 18, 167),
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+          ),
+          
+          // Nombre de la fruta
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 75, 18, 167),
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(15)),
             ),
-            
-            // Fruit Information in a scrollable container with pyramid layout
-            // Cambiado a fondo blanco
-            Expanded(
-              child: Container(
-                color: Colors.white, // Fondo blanco para el contenedor de texto
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // Descripción
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(bottom: 8),
-                        child: Text(
-                          fruit.description,
-                          style: const TextStyle(fontSize: 12),
-                          textAlign: TextAlign.justify,
-                        ),
-                      ),
-                      
-                      // Clasificación
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.38,
-                        margin: const EdgeInsets.only(bottom: 4),
-                        child: _buildInfoSection('Clasificación:', fruit.classification),
-                      ),
-                      
-                      // Peso promedio
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.32,
-                        margin: const EdgeInsets.only(bottom: 4),
-                        child: _buildInfoSection('Peso promedio:', fruit.averageWeight),
-                      ),
-                      
-                      // Color
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.26,
-                        margin: const EdgeInsets.only(bottom: 4),
-                        child: _buildInfoSection('Color:', fruit.color),
-                      ),
-                      
-                      // Usos comunes
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.20,
-                        child: _buildInfoSection('Usos comunes:', fruit.commonUses),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget _buildInfoSection(String title, String content) {
-      return RichText(
-        textAlign: TextAlign.center,
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: '$title ',
+            child: Text(
+              fruit.name,
+              textAlign: TextAlign.center,
               style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
-                fontSize: 11,
-                color: Color.fromARGB(255, 10, 10, 10),
               ),
             ),
-            TextSpan(
-              text: content,
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Construir la cara trasera de la tarjeta (con la información)
+  Widget _buildBackCard(FruitInfo fruit) {
+    return Card(
+      key: const ValueKey(false),
+      elevation: 0,
+      color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Encabezado con nombre de la fruta
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 75, 18, 167),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+            ),
+            child: Text(
+              fruit.name,
+              textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 11,
-                color: Colors.black,
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
-        ),
-      );
-    }
+          ),
+          
+          // Información de la fruta
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildInfoSection('Descripción:', fruit.description),
+                  const SizedBox(height: 10),
+                  _buildInfoSection('Clasificación:', fruit.classification),
+                  const SizedBox(height: 8),
+                  _buildInfoSection('Peso promedio:', fruit.averageWeight),
+                  const SizedBox(height: 8),
+                  _buildInfoSection('Color:', fruit.color),
+                  const SizedBox(height: 8),
+                  _buildInfoSection('Usos comunes:', fruit.commonUses),
+                ],
+              ),
+            ),
+          ),
+          
+          // Botón para volver
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: TextButton.icon(
+              icon: const Icon(Icons.refresh, color: Color.fromARGB(255, 75, 18, 167)),
+              label: const Text(
+                'Voltear',
+                style: TextStyle(color: Color.fromARGB(255, 75, 18, 167)),
+              ),
+              onPressed: _toggleCard,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
-  // Modelo para la información de frutas
-  class FruitInfo {
-    final String name;
-    final String description;
-    final String classification;
-    final String averageWeight;
-    final String color;
-    final String commonUses;
-    final String imageUrl;
-
-    FruitInfo({
-      required this.name,
-      required this.description, 
-      required this.classification,
-      required this.averageWeight,
-      required this.color,
-      required this.commonUses,
-      required this.imageUrl,
-    });
+  // Método para construir cada sección de información
+  Widget _buildInfoSection(String title, String content) {
+    return RichText(
+      textAlign: TextAlign.justify,
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: '$title ',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+              color: Color.fromARGB(255, 75, 18, 167),
+            ),
+          ),
+          TextSpan(
+            text: content,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
+    );
   }
+}
+
+// Modelo para la información de frutas
+class FruitInfo {
+  final String name;
+  final String description;
+  final String classification;
+  final String averageWeight;
+  final String color;
+  final String commonUses;
+  final String imageUrl;
+
+  FruitInfo({
+    required this.name,
+    required this.description, 
+    required this.classification,
+    required this.averageWeight,
+    required this.color,
+    required this.commonUses,
+    required this.imageUrl,
+  });
+}

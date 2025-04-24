@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
 
+
 class InicioMusicoterapia extends StatefulWidget {
   const InicioMusicoterapia({super.key});
 
@@ -30,8 +31,8 @@ class _InicioMusicoterapiaState extends State<InicioMusicoterapia> {
   final List<AlbumItem> _allAlbums = [
     // Popular Albums
     AlbumItem(
-      'Música Clásica',
-      'Lo mejor de la música clásica',
+      'Dormir',
+      'Lo mejor de la música para dormir',
       'assets/MUSICOTERAPIA/img_1.jpg',
       1,
       artist: 'Varios Artistas',

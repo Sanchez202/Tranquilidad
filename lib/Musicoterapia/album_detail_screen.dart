@@ -41,58 +41,7 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
     switch (albumId) {
       case 1:
         return [
-          {'title': 'Weightless', 'duration': '3:30'},
-          {'title': 'Pure Tranquility', 'duration': '4:45'},
-          {'title': 'Mindful Journey', 'duration': '5:12'},
-          {'title': 'Peaceful Harmony', 'duration': '3:55'},
-          {'title': 'Inner Balance', 'duration': '4:20'},
-          {'title': 'Serenity Now', 'duration': '3:15'},
-          {'title': 'Gentle Stream', 'duration': '6:04'},
-          {'title': 'Deep Relaxation', 'duration': '4:48'},
-        ];
-      case 2:
-        return [
-          {'title': 'Ocean Waves', 'duration': '5:30'},
-          {'title': 'Coastal Breeze', 'duration': '4:15'},
-          {'title': 'Sunset Meditation', 'duration': '6:22'},
-          {'title': 'Beach Harmony', 'duration': '3:48'},
-          {'title': 'Seaside Dreams', 'duration': '5:10'},
-          {'title': 'Tidal Calm', 'duration': '4:35'},
-          {'title': 'Oceanic Flow', 'duration': '5:25'},
-          {'title': 'Drifting Tides', 'duration': '4:59'},
-        ];
-      case 3:
-        return [
-          {'title': 'Forest Whispers', 'duration': '4:42'},
-          {'title': 'Mountain Echo', 'duration': '5:18'},
-          {'title': 'Woodland Retreat', 'duration': '3:56'},
-          {'title': 'Natural Serenity', 'duration': '6:10'},
-          {'title': 'Wilderness Peace', 'duration': '4:30'},
-          {'title': 'Gentle Rain', 'duration': '5:05'},
-          {'title': 'Wind in Trees', 'duration': '4:22'},
-          {'title': 'Dawn Chorus', 'duration': '3:48'},
-        ];
-      case 4:
-        return [
-          {'title': 'Starlight Sonata', 'duration': '4:15'},
-          {'title': 'Moonbeam Melody', 'duration': '5:22'},
-          {'title': 'Celestial Dreams', 'duration': '3:50'},
-          {'title': 'Night Harmony', 'duration': '4:38'},
-          {'title': 'Cosmic Lullaby', 'duration': '6:12'},
-          {'title': 'Astral Journey', 'duration': '5:30'},
-          {'title': 'Tranquil Universe', 'duration': '4:45'},
-          {'title': 'Stellar Peace', 'duration': '3:58'},
-        ];
-      case 5:
-        return [
-          {'title': 'Zen Garden', 'duration': '5:15'},
-          {'title': 'Inner Temple', 'duration': '4:30'},
-          {'title': 'Mindful Moment', 'duration': '3:48'},
-          {'title': 'Spiritual Flow', 'duration': '6:25'},
-          {'title': 'Ancient Wisdom', 'duration': '4:52'},
-          {'title': 'Meditative Path', 'duration': '5:10'},
-          {'title': 'Sacred Space', 'duration': '4:18'},
-          {'title': 'Eternal Peace', 'duration': '5:35'},
+          {'title': 'sonido relajante', 'duration': '2:29'},
         ];
       default:
         return [

@@ -174,22 +174,15 @@ final GoRouter _router = GoRouter(
           },
         ),
 
-        GoRoute(
-          path: 'player',
-          builder: (BuildContext context, GoRouterState state) {
-            final extra = state.extra as Map<String, dynamic>;
-
-            return MusicPlayerScreen(
-              albumId: extra['albumId'] as int,
-              albumTitle: extra['albumTitle'] as String,
-              albumArtist: extra['albumArtist'] as String,
-              coverUrl: extra['coverUrl'] as String,
-              isAsset: extra['isAsset'] as bool,
-              trackIndex: extra['trackIndex'] as int,
-              tracks: (extra['tracks'] as List).cast<Map<String, dynamic>>(),
-            );
-          },
-        ),
+GoRoute(
+  path: 'player',
+  builder: (BuildContext context, GoRouterState state) {
+    // Get the initialTrackIndex from extra parameters instead of path
+    final Map<String, dynamic> extra = state.extra as Map<String, dynamic>? ?? {};
+    final initialTrackIndex = extra['trackIndex'] ?? 0;
+    return MusicPlayerScreen(initialTrackIndex: initialTrackIndex);
+  },
+),
 
         GoRoute(
           path: 'reproducor_album',

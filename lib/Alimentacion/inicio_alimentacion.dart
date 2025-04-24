@@ -23,7 +23,7 @@ class _InicioAlimentacionState extends State<InicioAlimentacion> {
           'frutas que ayudan a reducir el estrés, mejorar la concentración'
           'y fortalecer tu sistema inmunológico.',
       imageUrl: 'assets/ALIMENTACION/FrutasInf.jpg',
-      route: '/alimentacion/informacion_frutas', // Updated route path
+      route: '/alimentacion/informacion_frutas', //
     ),
     InfoCard(
       title: 'Seguimiento de proceso',
