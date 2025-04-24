@@ -9,6 +9,9 @@ import '../mapasueños/iniciolibros.dart';
 import '../mapasueños/categoriaArte.dart';
 import '../mapasueños/vistalibros.dart';
 import '../rutinasEjercicios/inicioRutina.dart';
+import '../rutinasEjercicios/calendario.dart';
+import '../rutinasEjercicios/favoritos.dart';
+import '../rutinasEjercicios/notificaciones.dart';
 import '../atencionprofesional/home.dart';
 import '../musicoterapia/inicio_musicoterapia.dart';
 import '../musicoterapia/album_detail_screen.dart';
@@ -90,11 +93,30 @@ final GoRouter _router = GoRouter(
           },
         ),
          GoRoute(
+          path: 'calendario',
+          builder: (BuildContext context, GoRouterState state) {
+            return CalendarScreen(); // Vista a la que quieres ir 
+          },
+        ),
+         GoRoute(
+          path: 'favoritos',
+          builder: (BuildContext context, GoRouterState state) {
+            return FavoritosScreen(); // Vista a la que quieres ir 
+          },
+        ),
+        GoRoute(
+          path: 'notificaciones',
+          builder: (BuildContext context, GoRouterState state) {
+            return NotificacionesScreen(); // Vista a la que quieres ir 
+          },
+        ),
+         GoRoute(
           path: 'categoriaArte',
           builder: (BuildContext context, GoRouterState state) {
             return categoria(); // Vista a la que quieres ir
           },
         ),
+        
        
          GoRoute(
   path: 'detalles-libro/:bookId',
@@ -105,7 +127,6 @@ final GoRouter _router = GoRouter(
   },
 ),
          
-       
         ////Atencion Profesional ////
         GoRoute(
           path: 'home',
