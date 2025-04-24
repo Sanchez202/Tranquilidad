@@ -167,7 +167,7 @@ class _TestBienestarState extends State<TestBienestar> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/Alimentacion/Fondo_Test.png"),
+                image: AssetImage("assets/ALIMENTACION/Fondo_Test.png"),
                 fit: BoxFit.cover,
               ),
             ),

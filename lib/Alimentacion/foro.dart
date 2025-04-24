@@ -52,7 +52,7 @@ Widget build(BuildContext context) {
         // Imagen de fondo que cubre toda la pantalla
         Positioned.fill(
           child: Image.asset(
-            'assets/Alimentacion/Fondo_Test.png',
+            'assets/ALIMENTACION/Fondo_Test.png',
             fit: BoxFit.cover,
           ),
         ),
@@ -98,7 +98,7 @@ Widget build(BuildContext context) {
                               children: [
                                 const CircleAvatar(
                                   radius: 20,
-                                  backgroundImage: AssetImage('assets/Alimentacion/User1.png'),
+                                  backgroundImage: AssetImage('assets/ALIMENTACION/User1.png'),
                                 ),
                                 const SizedBox(width: 10),
                                 Expanded(
@@ -141,7 +141,7 @@ Widget build(BuildContext context) {
                                 children: [
                                   const CircleAvatar(
                                     radius: 15,
-                                    backgroundImage: AssetImage('assets/Alimentacion/User2.png'),
+                                    backgroundImage: AssetImage('assets/ALIMENTACION/User2.png'),
                                   ),
                                   const SizedBox(width: 8),
                                   Expanded(

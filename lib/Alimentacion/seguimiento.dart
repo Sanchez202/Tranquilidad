@@ -45,7 +45,7 @@ class _SeguimientoScreenState extends State<SeguimientoScreen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/Alimentacion/Fondo_Test.png"),
+                image: AssetImage("assets/ALIMENTACION/Fondo_Test.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -55,7 +55,7 @@ class _SeguimientoScreenState extends State<SeguimientoScreen> {
               children: [
                 const SizedBox(height: 5),
                 const Text(
-                  'Seguimiento',
+                  'SEGUIMIENTO',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -248,24 +248,24 @@ class Fruta {
 }
 
 final List<Fruta> frutasDisponibles = [
-  Fruta(image: 'assets/Alimentacion/banano.png', title: 'Banano', kcal: 432),
-  Fruta(image: 'assets/Alimentacion/manzana.png', title: 'Manzana', kcal: 518),
-  Fruta(image: 'assets/Alimentacion/sandia.png', title: 'Sandía', kcal: 350),
-  Fruta(image: 'assets/Alimentacion/pera.png', title: 'Pera', kcal: 210),
-  Fruta(image: 'assets/Alimentacion/uvas.png', title: 'Uvas', kcal: 290),
-  Fruta(image: 'assets/Alimentacion/papaya.png', title: 'Papaya', kcal: 310),
-  Fruta(image: 'assets/Alimentacion/uvas.png', title: 'Ciruela', kcal: 46),
-  Fruta(image: 'assets/Alimentacion/Coco.png', title: 'Coco', kcal: 354),
-  Fruta(image: 'assets/Alimentacion/Frutos_rojos.png', title: 'Frutos Rojos', kcal: 55),
-  Fruta(image: 'assets/Alimentacion/Granada.png', title: 'Granada', kcal: 83),
-  Fruta(image: 'assets/Alimentacion/Grosella.png', title: 'Grosella', kcal: 56),
-  Fruta(image: 'assets/Alimentacion/Higo.png', title: 'Higo', kcal: 74),
-  Fruta(image: 'assets/Alimentacion/kiwi.png', title: 'Kiwi', kcal: 41),
-  Fruta(image: 'assets/Alimentacion/Mandarina.png', title: 'Mandarina', kcal: 53),
-  Fruta(image: 'assets/Alimentacion/mango.png', title: 'Mango', kcal: 60),
-  Fruta(image: 'assets/Alimentacion/maracuya.png', title: 'Maracuya', kcal: 97),
-  Fruta(image: 'assets/Alimentacion/mora.png', title: 'Mora', kcal: 43),
-  Fruta(image: 'assets/Alimentacion/naranja.png', title: 'Naranja', kcal: 47),
-  Fruta(image: 'assets/Alimentacion/papaya.png', title: 'Papaya', kcal: 43),
-  Fruta(image: 'assets/Alimentacion/piña.png', title: 'Piña', kcal: 50),
+  Fruta(image: 'assets/ALIMENTACION/banano.png', title: 'Banano', kcal: 432),
+  Fruta(image: 'assets/ALIMENTACION/manzana.png', title: 'Manzana', kcal: 518),
+  Fruta(image: 'assets/ALIMENTACION/sandia.png', title: 'Sandía', kcal: 350),
+  Fruta(image: 'assets/ALIMENTACION/pera.png', title: 'Pera', kcal: 210),
+  Fruta(image: 'assets/ALIMENTACION/uvas.png', title: 'Uvas', kcal: 290),
+  Fruta(image: 'assets/ALIMENTACION/papaya.png', title: 'Papaya', kcal: 310),
+  Fruta(image: 'assets/ALIMENTACION/uvas.png', title: 'Ciruela', kcal: 46),
+  Fruta(image: 'assets/ALIMENTACION/Coco.png', title: 'Coco', kcal: 354),
+  Fruta(image: 'assets/ALIMENTACION/Frutos_rojos.png', title: 'Frutos Rojos', kcal: 55),
+  Fruta(image: 'assets/ALIMENTACION/Granada.png', title: 'Granada', kcal: 83),
+  Fruta(image: 'assets/ALIMENTACION/Grosella.png', title: 'Grosella', kcal: 56),
+  Fruta(image: 'assets/ALIMENTACION/Higo.png', title: 'Higo', kcal: 74),
+  Fruta(image: 'assets/ALIMENTACION/kiwi.png', title: 'Kiwi', kcal: 41),
+  Fruta(image: 'assets/ALIMENTACION/Mandarina.png', title: 'Mandarina', kcal: 53),
+  Fruta(image: 'assets/ALIMENTACION/mango.png', title: 'Mango', kcal: 60),
+  Fruta(image: 'assets/ALIMENTACION/maracuya.png', title: 'Maracuya', kcal: 97),
+  Fruta(image: 'assets/ALIMENTACION/mora.png', title: 'Mora', kcal: 43),
+  Fruta(image: 'assets/ALIMENTACION/naranja.png', title: 'Naranja', kcal: 47),
+  Fruta(image: 'assets/ALIMENTACION/papaya.png', title: 'Papaya', kcal: 43),
+  Fruta(image: 'assets/ALIMENTACION/piña.png', title: 'Piña', kcal: 50),
 ];

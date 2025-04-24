@@ -35,7 +35,7 @@
         averageWeight: '120-150 gramos',
         color: 'Amarillo cuando maduro',
         commonUses: 'Consumo crudo, en batidos, postres y horneados',
-        imageUrl: 'assets/Alimentacion/banano.png',
+        imageUrl: 'assets/ALIMENTACION/banano.png',
       ),
       FruitInfo(
         name: 'Mango',
@@ -45,7 +45,7 @@
         averageWeight: '200-300 gramos',
         color: 'Verde, amarillo, naranja o rojo según madurez',
         commonUses: 'Consumo fresco, batidos, salsas, ensaladas y postres',
-        imageUrl: 'assets/Alimentacion/mango.png',
+        imageUrl: 'assets/ALIMENTACION/mango.png',
       ),
       FruitInfo(
         name: 'Maracuyá',
@@ -55,7 +55,7 @@
         averageWeight: '50-80 gramos',
         color: 'Amarillo o morado según la variedad',
         commonUses: 'Jugos, postres, salsas y cócteles',
-        imageUrl: 'assets/Alimentacion/maracuya.png',
+        imageUrl: 'assets/ALIMENTACION/maracuya.png',
       ),
       FruitInfo(
         name: 'Pera',
@@ -65,7 +65,7 @@
         averageWeight: '150-200 gramos',
         color: 'Verde, amarillo o rojizo según la variedad',
         commonUses: 'Consumo fresco, en ensaladas, horneados y conservas',
-        imageUrl: 'assets/Alimentacion/pera.png',
+        imageUrl: 'assets/ALIMENTACION/pera.png',
       ),
       FruitInfo(
         name: 'Naranja',
@@ -75,7 +75,7 @@
         averageWeight: '130-180 gramos',
         color: 'Naranja brillante cuando madura',
         commonUses: 'Consumo fresco, jugos, mermeladas y repostería',
-        imageUrl: 'assets/Alimentacion/naranja.png',
+        imageUrl: 'assets/ALIMENTACION/naranja.png',
       ),
       FruitInfo(
         name: 'Uvas',
@@ -85,7 +85,7 @@
         averageWeight: '5-10 gramos por uva',
         color: 'Verde, rojo, púrpura o negro, según la variedad',
         commonUses: 'Consumo fresco, vino, pasas, jugos y mermeladas',
-        imageUrl: 'assets/Alimentacion/uvas.png',
+        imageUrl: 'assets/ALIMENTACION/uvas.png',
       ),
       FruitInfo(
         name: 'Mora',
@@ -95,7 +95,7 @@
         averageWeight: '3-5 gramos por unidad',
         color: 'Negro brillante cuando madura',
         commonUses: 'Consumo fresco, mermeladas, postres y batidos',
-        imageUrl: 'assets/Alimentacion/mora.png',
+        imageUrl: 'assets/ALIMENTACION/mora.png',
       ),
       FruitInfo(
         name: 'Kiwi',
@@ -105,7 +105,7 @@
         averageWeight: '50-80 gramos',
         color: 'Marrón exterior y verde brillante interior',
         commonUses: 'Consumo fresco, ensaladas de frutas, postres y smoothies',
-        imageUrl: 'assets/Alimentacion/kiwi.png',
+        imageUrl: 'assets/ALIMENTACION/kiwi.png',
       ),
       FruitInfo(
         name: 'Sandía',
@@ -115,7 +115,7 @@
         averageWeight: '5-15 kilogramos',
         color: 'Piel verde con franjas, pulpa roja o amarilla',
         commonUses: 'Consumo fresco, zumos, ensaladas y postres helados',
-        imageUrl: 'assets/Alimentacion/sandia.png',
+        imageUrl: 'assets/ALIMENTACION/sandia.png',
       ),
       FruitInfo(
         name: 'Piña',
@@ -125,7 +125,7 @@
         averageWeight: '1-2 kilogramos',
         color: 'Piel marrón y pulpa amarilla dorada',
         commonUses: 'Consumo fresco, jugos, postres y platos salados',
-        imageUrl: 'assets/Alimentacion/piña.png',
+        imageUrl: 'assets/ALIMENTACION/piña.png',
       ),
       FruitInfo(
         name: 'Ciruela',
@@ -135,7 +135,7 @@
         averageWeight: '30-100 gramos según variedad',
         color: 'Rojo, morado, amarillo o verde según la variedad',
         commonUses: 'Consumo fresco, secas (ciruelas pasas), mermeladas y postres',
-        imageUrl: 'assets/Alimentacion/uvas.png',
+        imageUrl: 'assets/ALIMENTACION/uvas.png',
       ),
       FruitInfo(
         name: 'Frutos Rojos',
@@ -145,7 +145,7 @@
         averageWeight: 'Variable según el tipo (1-20 gramos por unidad)',
         color: 'Tonos rojos, azules y morados',
         commonUses: 'Consumo fresco, postres, batidos, mermeladas y repostería',
-        imageUrl: 'assets/Alimentacion/Frutos_rojos.png',
+        imageUrl: 'assets/ALIMENTACION/Frutos_rojos.png',
       ),
       FruitInfo(
         name: 'Papaya',
@@ -155,7 +155,7 @@
         averageWeight: '500-1000 gramos',
         color: 'Piel amarilla-verdosa, pulpa naranja o rojiza',
         commonUses: 'Consumo fresco, ensaladas, batidos y como ablandador de carnes',
-        imageUrl: 'assets/Alimentacion/Papaya.png',
+        imageUrl: 'assets/ALIMENTACION/Papaya.png',
       ),
       FruitInfo(
         name: 'Higo',
@@ -165,7 +165,7 @@
         averageWeight: '40-60 gramos',
         color: 'Verde, morado o negro según variedad y madurez',
         commonUses: 'Consumo fresco, secos, en postres y platos salados',
-        imageUrl: 'assets/Alimentacion/Higo.png',
+        imageUrl: 'assets/ALIMENTACION/Higo.png',
       ),
       FruitInfo(
         name: 'Granada',
@@ -175,7 +175,7 @@
         averageWeight: '150-200 gramos',
         color: 'Exterior rojizo, semillas internas rojas brillantes',
         commonUses: 'Consumo de los arilos, jugos, salsas y en cocina internacional',
-        imageUrl: 'assets/Alimentacion/Granada.png',
+        imageUrl: 'assets/ALIMENTACION/Granada.png',
       ),
       FruitInfo(
         name: 'Grosella',
@@ -185,7 +185,7 @@
         averageWeight: '1-2 gramos por unidad',
         color: 'Rojo, negro o blanco según la variedad',
         commonUses: 'Mermeladas, jaleas, zumos, postres y salsas',
-        imageUrl: 'assets/Alimentacion/Grosella.png',
+        imageUrl: 'assets/ALIMENTACION/Grosella.png',
       ),
       FruitInfo(
         name: 'Mandarina',
@@ -195,7 +195,7 @@
         averageWeight: '80-120 gramos',
         color: 'Naranja intenso cuando madura',
         commonUses: 'Consumo fresco, zumos, postres y mermeladas',
-        imageUrl: 'assets/Alimentacion/Mandarina.png',
+        imageUrl: 'assets/ALIMENTACION/Mandarina.png',
       ),
       FruitInfo(
         name: 'Coco',
@@ -205,7 +205,7 @@
         averageWeight: '1.5-2.5 kilogramos',
         color: 'Marrón exterior, pulpa blanca y agua transparente',
         commonUses: 'Agua, leche, aceite, pulpa, en cocina, postres y cosméticos',
-        imageUrl: 'assets/Alimentacion/Coco.png',
+        imageUrl: 'assets/ALIMENTACION/Coco.png',
       ),
     ];
 

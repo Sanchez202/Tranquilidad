@@ -109,35 +109,35 @@ flutter:
     - assets/MUSICOTERAPIA/podcast3.jpg
     - assets/MUSICOTERAPIA/podcast4.jpg
 
-    - assets/Alimentacion/Fondo_Test.png
-    - assets/Alimentacion/Fondo_Inicio.png
-    - assets/Alimentacion/fONDO_FRUTAS.jpg
-    - assets/Alimentacion/FrutasInf.jpg
-    - assets/Alimentacion/SEGUIMIENTO.png
-    - assets/Alimentacion/social_media.jpg
-    - assets/Alimentacion/manzana_verde.png
-    - assets/Alimentacion/banano.png
-    - assets/Alimentacion/mango.png
-    - assets/Alimentacion/maracuya.png
-    - assets/Alimentacion/pera.png
-    - assets/Alimentacion/naranja.png
-    - assets/Alimentacion/uvas.png
-    - assets/Alimentacion/mora.png
-    - assets/Alimentacion/kiwi.png
-    - assets/Alimentacion/sandia.png
-    - assets/Alimentacion/piña.png
-    - assets/Alimentacion/Ciruela.png
-    - assets/Alimentacion/Frutos_rojos.png
-    - assets/Alimentacion/Papaya.png
-    - assets/Alimentacion/Higo.png
-    - assets/Alimentacion/Granada.png
-    - assets/Alimentacion/Grosella.png
-    - assets/Alimentacion/Mandarina.png
-    - assets/Alimentacion/Coco.png
-    - assets/Alimentacion/User1.png
-    - assets/Alimentacion/User2.png
-    - assets/Alimentacion/fondo_seguimiento.png
-    - assets/Alimentacion/manzana.png
+    - assets/ALIMENTACION/Fondo_Test.png
+    - assets/ALIMENTACION/Fondo_Inicio.png
+    - assets/ALIMENTACION/fONDO_FRUTAS.jpg
+    - assets/ALIMENTACION/FrutasInf.jpg
+    - assets/ALIMENTACION/SEGUIMIENTO.png
+    - assets/ALIMENTACION/social_media.jpg
+    - assets/ALIMENTACION/manzana_verde.png
+    - assets/ALIMENTACION/banano.png
+    - assets/ALIMENTACION/mango.png
+    - assets/ALIMENTACION/maracuya.png
+    - assets/ALIMENTACION/pera.png
+    - assets/ALIMENTACION/naranja.png
+    - assets/ALIMENTACION/uvas.png
+    - assets/ALIMENTACION/mora.png
+    - assets/ALIMENTACION/kiwi.png
+    - assets/ALIMENTACION/sandia.png
+    - assets/ALIMENTACION/piña.png
+    - assets/ALIMENTACION/Ciruela.png
+    - assets/ALIMENTACION/Frutos_rojos.png
+    - assets/ALIMENTACION/Papaya.png
+    - assets/ALIMENTACION/Higo.png
+    - assets/ALIMENTACION/Granada.png
+    - assets/ALIMENTACION/Grosella.png
+    - assets/ALIMENTACION/Mandarina.png
+    - assets/ALIMENTACION/Coco.png
+    - assets/ALIMENTACION/User1.png
+    - assets/ALIMENTACION/User2.png
+    - assets/ALIMENTACION/fondo_seguimiento.png
+    - assets/ALIMENTACION/manzana.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
