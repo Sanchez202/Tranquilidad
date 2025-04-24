@@ -173,16 +173,17 @@ final GoRouter _router = GoRouter(
             );
           },
         ),
-
 GoRoute(
-  path: 'player',
+  path: '/player',
   builder: (BuildContext context, GoRouterState state) {
-    // Get the initialTrackIndex from extra parameters instead of path
-    final Map<String, dynamic> extra = state.extra as Map<String, dynamic>? ?? {};
+    final extra = state.extra as Map<String, dynamic>? ?? {};
     final initialTrackIndex = extra['trackIndex'] ?? 0;
-    return MusicPlayerScreen(initialTrackIndex: initialTrackIndex);
+
+    return MusicApp(initialTrackIndex: initialTrackIndex);
   },
 ),
+
+
 
         GoRoute(
           path: 'reproducor_album',
