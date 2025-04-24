@@ -72,7 +72,7 @@ class Comment {
 class BookApiService {
   // URL base para la API
   static const String baseApiUrl = "https://back1-production-67bf.up.railway.app/v1";
-  
+  //
   // URLs específicas
   static String getBookApiUrl(int bookId) => "$baseApiUrl/api/libros/$bookId";
   static String getRatingsApiUrl(int bookId) => "$baseApiUrl/api/libros/$bookId/calificaciones";
@@ -169,6 +169,7 @@ class BookApiService {
       throw Exception('Error en la solicitud de envío de comentario: $e');
     }
   }
+
 
   // Eliminar un comentario
   static Future<bool> deleteComment(int commentId, int bookId) async {
