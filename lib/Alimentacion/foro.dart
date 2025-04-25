@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tranquilidad_app/widgets/custom_app_bar.dart';
 import 'package:tranquilidad_app/widgets/custom_nav_bar.dart';
 import '../Alimentacion/models/post.dart';
@@ -61,6 +62,20 @@ Widget build(BuildContext context) {
         Column(
           children: [
             const CustomAppBar(), // Asegúrate de que este tenga fondo transparente si quieres ver la imagen
+
+            // Botón de regreso añadido aquí
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, top: 8.0, bottom: 8.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  onPressed: () {
+                    context.go('/inicio_alimentacion');
+                  },
+                  icon: const Icon(Icons.arrow_back),
+                ),
+              ),
+            ),
 
             Padding(
               padding: const EdgeInsets.all(10),

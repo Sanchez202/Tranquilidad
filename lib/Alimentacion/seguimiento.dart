@@ -63,6 +63,20 @@ class _SeguimientoScreenState extends State<SeguimientoScreen> {
                   ),
                 ),
 
+                // Botón de regreso añadido aquí
+                 Padding(
+                    padding: const EdgeInsets.only(left: 16.0, top: 8.0, bottom: 8.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: IconButton(
+                        onPressed: () {
+                          context.go('/inicio_alimentacion');
+                        },
+                        icon: const Icon(Icons.arrow_back),
+                      ),
+                    ),
+                  ),
+
                 const SizedBox(height: 20),
                 resumenNutricional(),
                 const SizedBox(height: 20),

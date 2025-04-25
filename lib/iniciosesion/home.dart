@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             title: "Alimentación",
                             description: "Mejora tu bienestar con nutrición consciente",
                             imagePath: "https://images.unsplash.com/photo-1498837167922-ddd27525d352",
-                            route: '/test_bienestar',
+                            route: '/inicio_alimentacion',
                             icon: Icons.restaurant_menu,
                           ),
                           const SizedBox(height: 16),
